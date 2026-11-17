@@ -53,7 +53,10 @@ check_lint() {
 }
 
 check_build() {
-  run_npm_check "CHK-BUILD" "build" "dist built"
+  # 沙箱环境下清空 dist 走回收站删除，偶发 ETIMEDOUT；自动重试一次
+  if ! run_npm_check "CHK-BUILD" "build" "dist built"; then
+    run_npm_check "CHK-BUILD" "build" "dist built (retried once)"
+  fi
 }
 
 check_unit() {
