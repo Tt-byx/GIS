@@ -254,3 +254,16 @@ export {
   FACILITY_LAYER_ID,
   CLUSTER_LABEL_MIN_FONT_PX,
 } from './cluster'
+
+// ==== 统计图表联动（T-048，实现在 ./chartLink） ====
+export {
+  loadChartData,
+  resetChartDataCache,
+  buildPieOption,
+  buildBarOption,
+  highlightCategory,
+  locateDistrict,
+  CHART_HEIGHT_PX,
+  DIMMED_OPACITY,
+  DISTRICT_CODES,
+} from './chartLink'
