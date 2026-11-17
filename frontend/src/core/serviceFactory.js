@@ -33,6 +33,16 @@ export function createFeatureLayer(docName = MAP_DOC_NAME) {
 }
 
 /**
+ * 创建要素服务对象（03 §11.3：点选/画框/周边查询由浏览器直接调要素服务，A-20）。
+ * AR-17：modules 禁止 new Zondy.*，FeatureServer 的构造收敛于本工厂。
+ * @param {string} [docName] 地图文档名
+ * @returns {object} zondy.service.FeatureServer 实例
+ */
+export function createFeatureServer(docName = MAP_DOC_NAME) {
+  return new zondy.service.FeatureServer({ url: buildFeatureServerUrl(docName) })
+}
+
+/**
  * 创建 Leaflet 版瓦片底图图层对象。
  * @param {string} tileServiceUrl 瓦片服务完整路径（由 R3 从配置传入）
  * @returns {object} zondy.leaflet.layer.IGSTileLayer 实例
