@@ -1,0 +1,1222 @@
+openapi: 3.0.3
+
+info:
+  title: 城市公共服务设施分布 WebGIS 平台 · 业务接口契约
+  version: 1.0.0
+  description: |
+    本文件是 `SPEC/03-api-contract.md` v1.0.0（FROZEN）与 `SPEC/02-data-model.md` §6 映射表的
+    机器可读镜像，由 R7 维护（T-031）。**字段名与路径的唯一权威是 SPEC，本文件不一致时以 SPEC 为准**（A-16）。
+
+    全局约束（违反任一条即判定为契约失败）：
+
+    - 业务接口恰好 8 个；MUST NOT 新增第 9 个（A-19）。
+    - 除 `API-07` 成功时返回文件流外，全部响应 MUST 为 `Wrapper` 结构；失败时 `data` MUST 为 `null`（A-01）。
+    - 响应 MUST NOT 出现 `FID`、`OBJECTID`、`CAT_L1` 等数据库原始列名（A-05、A-21）。
+    - `null` 与"字段缺失"语义不同：有值域但当前无值 → 返回 `null` 并保留键（A-06）；MUST NOT 用 `0` 代替 `null`（A-23）。
+    - 经纬度为 CGCS2000（EPSG:4490），6 位小数；日期 `yyyy-MM-dd`，时间 ISO 8601 带时区（A-08 ~ A-10）。
+    - `POST` 的分析类接口 MUST 幂等：相同参数 24 h 内返回相同 `taskId`（A-25）。
+
+    接口总表（03 §1）：
+
+    | # | 方法 | 路径 | 用途 |
+    |---|---|---|---|
+    | API-01 | GET | `/api/v1/meta/dict` | 字典与地图令牌 |
+    | API-02 | GET | `/api/v1/facilities` | 设施查询（分页） |
+    | API-03 | GET | `/api/v1/facilities/suggest` | 名称补全（代理高德） |
+    | API-04 | GET | `/api/v1/statistics/district` | 分区统计 |
+    | API-05 | POST | `/api/v1/analysis/service-area` | 网络服务区 |
+    | API-06 | POST | `/api/v1/analysis/accessibility` | 2SFCA 可达性 |
+    | API-07 | POST | `/api/v1/export/excel` | 导出 Excel/CSV |
+    | API-08 | GET | `/api/v1/health` | 健康检查 |
+  license:
+    name: 项目内部文档
+
+servers:
+  - url: http://localhost
+    description: Nginx 反代入口。前端 MUST NOT 直连 8080 或 6163（A-12）
+
+security: []
+
+tags:
+  - name: meta
+    description: 字典与元数据，前端所有下拉框的数据来源（API-01）
+  - name: facility
+    description: 设施属性查询与名称补全（API-02、API-03）。点选/画框/附近查询由前端直连 IGServer 要素服务，不经过本组接口（A-20）
+  - name: statistics
+    description: 分区统计，数据源为 MySQL `STAT_DISTRICT` 预计算表（API-04）
+  - name: analysis
+    description: 空间分析，含任务落库与 24 h 幂等缓存（API-05、API-06）
+  - name: export
+    description: 文件导出，成功时返回文件流而非统一包装（API-07）
+  - name: system
+    description: 运行状态检查（API-08）
+
+paths:
+  /api/v1/meta/dict:
+    get:
+      tags: [meta]
+      operationId: api01GetDict
+      summary: 字典与地图令牌
+      description: |
+        一次返回 5 个大类 + 25 个中类、3 个区、全部街道，以及天地图令牌（03 §3）。
+
+        业务规则：
+        1. `categories` MUST 按 `SORT_NO` 升序，MUST NOT 按字母序。
+        2. `categories` MUST 恰好 5 个大类；中类数 MUST 与 `DICT_CATEGORY` 一致（25 条）。
+        3. `tiandituToken` 从 `SYS_CONFIG` 读取；值为 `__FILL_AT_DEPLOY__` 时 MUST 返回 `""`，MUST NOT 返回占位符原文。
+        4. `districts` MUST 恰好 3 条。
+
+        前端启动时请求一次并缓存于 Pinia，会话内不重复请求。
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DictResponse'
+        '500':
+          description: 数据库不可达（code `5000`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/facilities:
+    get:
+      tags: [facility]
+      operationId: api02ListFacilities
+      summary: 设施查询（分页 + 多条件）
+      description: |
+        属性查询主接口（03 §4）。由 `app` 转发到 IGServer 要素服务，**并在转发层完成字段名映射**。
+
+        业务规则：
+        1. 参数以 AND 组合；空值参数 MUST 被忽略，MUST NOT 拼成 `AND x = ''`。
+        2. `keyword` MUST 为 `LIKE '%kw%'`；`%` 与 `_` MUST 转义。
+        3. 排序 MUST 为 `facCode ASC`（稳定分页）。
+        4. `status=ALL` 时 MUST 不加状态条件。
+        5. **本接口不提供矩形范围（bbox）参数**；画框查询由前端直连 IGServer 要素服务（FR-M2-03、A-20）。
+      parameters:
+        - name: categoryL1
+          in: query
+          required: false
+          description: 大类筛选；空值不参与筛选
+          schema:
+            type: string
+            enum: [EDU, MED, CUL, WEL, COM]
+        - name: categoryL2
+          in: query
+          required: false
+          description: 中类筛选，取值见 API-01 字典
+          schema:
+            type: string
+            example: CHC
+        - name: districtCode
+          in: query
+          required: false
+          description: 行政区筛选
+          schema:
+            type: string
+            enum: ['420111', '420106', '420105']
+        - name: streetCode
+          in: query
+          required: false
+          description: 街道筛选，取值见 API-01 字典
+          schema:
+            type: string
+            example: '420111001'
+        - name: keyword
+          in: query
+          required: false
+          description: 名称包含匹配，长度 0–50；`%` 与 `_` 需转义
+          schema:
+            type: string
+            maxLength: 50
+        - name: status
+          in: query
+          required: false
+          description: 状态筛选；`ALL` 表示不加状态条件
+          schema:
+            type: string
+            enum: [正常, 停办, 在建, 未知, ALL]
+            default: 正常
+        - name: page
+          in: query
+          required: false
+          description: 页码，从 1 开始
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: size
+          in: query
+          required: false
+          description: 每页条数；超过 200 返回 `1002`
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 200
+            default: 20
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FacilityPageResponse'
+        '400':
+          description: 参数校验失败（`1001`）或超出范围（`1002`，如 `size > 200`、大类非枚举）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '503':
+          description: IGServer 不可达（`3001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/facilities/suggest:
+    get:
+      tags: [facility]
+      operationId: api03Suggest
+      summary: 名称补全（高德代理）
+      description: |
+        代理高德输入提示接口（03 §5），Key 只存在于后端 `application.yml`。
+
+        业务规则：
+        1. `kw` 长度 < 2 → `1001`。
+        2. Key MUST 从配置读取，MUST NOT 从请求参数接收。
+        3. 只保留 `name`/`district`/`lon`/`lat` 四个字段，MUST NOT 整包透传第三方响应。
+        4. 第三方返回空 → `data.list = []` 且 `code = 0`（空结果不是错误）。
+        5. 第三方配额超限 → `5001`。
+        6. 缓存：Caffeine，key = `kw|city`，TTL 10 分钟。
+      parameters:
+        - name: kw
+          in: query
+          required: true
+          description: 关键字
+          schema:
+            type: string
+            minLength: 2
+            maxLength: 30
+        - name: city
+          in: query
+          required: false
+          schema:
+            type: string
+            default: 武汉
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 20
+            default: 10
+      responses:
+        '200':
+          description: 成功（含空列表）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestResponse'
+        '400':
+          description: '`kw` 过短（`1001`）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '429':
+          description: 第三方配额超限（`5001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '503':
+          description: 第三方超时，视为上游不可用（`3001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/statistics/district:
+    get:
+      tags: [statistics]
+      operationId: api04DistrictStatistics
+      summary: 分区统计
+      description: |
+        读 MySQL `STAT_DISTRICT` 预计算表（03 §6），MUST NOT 在接口内做聚合计算。
+
+        业务规则：
+        1. `unit` MUST 按 `metric` 严格映射：`count` → `个`，`density` → `个/km²`，`perCapita` → `个/万人`。
+        2. `value` 为 `NULL` 时 MUST 返回 `null`，MUST NOT 返回 `0`（A-23）。
+        3. 查询 MUST 取 `MAX(DATA_DATE)` 版本。
+        4. `list` MUST 按 `unitCode` 升序。
+      parameters:
+        - name: level
+          in: query
+          required: true
+          description: 统计层级
+          schema:
+            type: string
+            enum: [district, street]
+        - name: categoryL1
+          in: query
+          required: false
+          description: 设施大类；`ALL` 表示全类合计
+          schema:
+            type: string
+            enum: [ALL, EDU, MED, CUL, WEL, COM]
+            default: ALL
+        - name: metric
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [count, density, perCapita]
+            default: count
+        - name: districtCode
+          in: query
+          required: false
+          description: 仅在 `level=street` 时生效：把街道列表限定在该区内
+          schema:
+            type: string
+            enum: ['420111', '420106', '420105']
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatResponse'
+        '400':
+          description: '`level` 非枚举（`1002`）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 该版本无数据（`2001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/analysis/service-area:
+    post:
+      tags: [analysis]
+      operationId: api05ServiceArea
+      summary: 网络服务区分析
+      description: |
+        调 IGServer 网络分析功能服务，结果沿路网生成（03 §7）。落库 `ANALYSIS_TASK` / `ANALYSIS_RESULT`。
+
+        业务规则：
+        1. `thresholds` MUST 去重并升序处理，重复值只算一次；`areas` MUST 按 `threshold` 升序返回。
+        2. `coverageRate` MUST 等于 `1 - uncoveredCommunity / totalCommunity`，保留 3 位小数。
+        3. 结果几何 MUST 沿路网生成，判定标准：圆度 = 面积 / (周长² / 4π) < 0.95。
+        4. 相同 `params` 24 h 内 MUST 命中缓存，返回相同 `taskId`，`elapsedMs` 为 `0`（A-25）。
+        5. 任务 MUST 先写 `ANALYSIS_TASK`（`RUNNING`），完成后更新为 `SUCCESS`/`FAILED`/`TIMEOUT`。
+        6. MUST NOT 用缓冲区代替服务区；MUST NOT 在前端计算覆盖率；MUST NOT 返回空 `geomWkt` 却标记成功。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceAreaReq'
+            example:
+              categoryL2: CHC
+              travelMode: WALK
+              thresholds: [5, 10, 15]
+              districtCode: '420111'
+              dissolve: true
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceAreaResponse'
+        '400':
+          description: '`thresholds` 含非法值（`1002`）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: '`categoryL2` 不存在（`2001`）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: 路网网络数据集未发布（`2002`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '502':
+          description: IGServer 分析服务异常（`3002`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '503':
+          description: IGServer 不可达（`3001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '504':
+          description: 计算超时（> 55 s，`4001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/analysis/accessibility:
+    post:
+      tags: [analysis]
+      operationId: api06Accessibility
+      summary: 可达性分析（2SFCA）
+      description: |
+        读 OD 矩阵做两步移动搜索法（03 §8）。落库 `ANALYSIS_TASK` / `ANALYSIS_RESULT`。
+
+        计算定义（唯一版本）：
+        - 衰减函数：`BINARY` → `f(t) = 1`（`t <= threshold`）；`LINEAR` → `f(t) = 1 - t / threshold`；
+          `GAUSSIAN` → `f(t) = exp(-0.5 * (t / (threshold / 2))²)`。
+        - 第一步：对每个设施 j，`R_j = S_j / Σ_k (D_k * f(t_kj))`，k 为阈值内居住点。
+        - 第二步：对每个居住点 i，`A_i = Σ_j (R_j * f(t_ij))`，j 为阈值内设施。
+        - `S_j` 取 `CAPACITY`；为 `null` 或 0 时 MUST 用 1 代替，并置 `stats.capacityFallback = true`。
+        - 分母为 0 时 `R_j` MUST 取 0，MUST NOT 抛除零异常。
+
+        业务规则：
+        1. `thresholdMinutes` MUST ∈ {5, 10, 15}，其他值 → `1002`。
+        2. `breaks` MUST 长度 6、严格递增、首值 = `stats.min`、末值 = `stats.max`。
+        3. `level` MUST ∈ 1–5，由 `score` 落在 `breaks` 的区间决定。
+        4. `results` 条数 MUST 等于参与计算的居住点数。
+        5. MUST NOT 允许自定义阈值；MUST NOT 在前端实现 2SFCA；MUST NOT 省略 `breaks`。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessibilityReq'
+            example:
+              categoryL2: CHC
+              thresholdMinutes: 15
+              decay: GAUSSIAN
+              capacityField: CAPACITY
+              districtCode: '420111'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccessibilityResponse'
+        '400':
+          description: '`thresholdMinutes` 非法（`1002`）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '404':
+          description: 该类别无设施（`2001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '422':
+          description: OD 矩阵缺失或 `IS_ACTIVE = 0`（`2002`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '504':
+          description: 计算超时（`4001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/export/excel:
+    post:
+      tags: [export]
+      operationId: api07Export
+      summary: 导出 Excel / CSV
+      description: |
+        按当前筛选条件导出（03 §9）。**成功时返回文件流，不套统一包装**；失败时返回 JSON 包装。
+        前端 MUST 按 `Content-Type` 分支处理。
+
+        业务规则：
+        1. 文件 MUST 为 UTF-8，CSV 必须带 BOM（前 3 字节 `EF BB BF`），否则 Excel 打开中文乱码。
+           xlsx 为 zip 容器，不追加 BOM（契约 §9 规则 1 中"前 3 字节"仅适用于 csv）。
+        2. 文件名时间戳 MUST 为服务器当前时间，格式 `yyyyMMddHHmmss`。
+        3. 表头 MUST 为中文，与界面列名逐字一致。
+        4. 导出内容 MUST 与 `params` 一致，MUST NOT 忽略筛选条件导出全量。
+        5. 行数为 0 时 MUST 仍生成只有表头的文件，并返回 `X-Row-Count: 0`，MUST NOT 返回错误。
+        6. MUST NOT 使用 GBK；文件名 MUST NOT 含 `/ \ : * ? " < > |`。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExportReq'
+            example:
+              type: STAT_DISTRICT
+              format: csv
+              params:
+                level: street
+                metric: perCapita
+                categoryL1: ALL
+              filename: 分区统计
+      responses:
+        '200':
+          description: 文件流（成功时不套统一包装）
+          headers:
+            Content-Disposition:
+              description: '`attachment; filename="<filename>_<yyyyMMddHHmmss>.<ext>"; filename*=UTF-8''<urlencoded>`'
+              schema:
+                type: string
+            X-Row-Count:
+              description: 数据行数（不含表头）；空结果时为 `0`
+              schema:
+                type: integer
+                minimum: 0
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: '`type` 非枚举（`1001`，以 JSON 包装返回）'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '500':
+          description: 生成失败（`5000`，以 JSON 包装返回）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+
+  /api/v1/health:
+    get:
+      tags: [system]
+      operationId: api08Health
+      summary: 健康检查
+      description: |
+        返回三个组件状态（03 §10）。
+
+        业务规则：
+        1. `status` 判定：全部正常 → `UP`；`igs` 或 `mysql` 任一 `DOWN` → `DOWN`；仅 `odMatrix = MISSING` → `DEGRADED`。
+        2. `odMatrix = MISSING` MUST NOT 导致非 0 `code`（可达性缺失不影响主流程）。
+        3. `code` MUST 始终为 `0`。
+        4. 检查 MUST 有 2 s 超时，整体 MUST NOT 超过 5 s；MUST NOT 因 IGServer 无响应而阻塞。
+        5. MUST NOT 暴露数据库连接串、Key、文件路径。
+      responses:
+        '200':
+          description: 成功（即使组件 DOWN 也返回 200）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  schemas:
+
+    Wrapper:
+      type: object
+      description: 统一响应包装（03 §2.2）。除 API-07 成功响应外，全部响应使用此结构。
+      required: [code, msg, data, traceId]
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: '`0` 成功；非 0 见 `ApiError`（05 §4）'
+          example: 0
+        msg:
+          type: string
+          description: 中文提示，MUST 可直接展示给用户，MUST NOT 含英文技术术语、堆栈、SQL（A-02）
+          example: success
+        data:
+          type: object
+          nullable: true
+          description: 成功时为业务数据（本系统 8 个接口均为对象）；`code != 0` 时 MUST 为 `null`（A-01）
+        traceId:
+          type: string
+          pattern: '^[0-9a-f]{12}$'
+          description: 12 位十六进制链路标识，失败时 MUST 在界面显示（A-03）
+          example: a1b2c3d4e5f6
+
+    ApiError:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          description: |
+            错误响应。`msg` MUST 与 05 §4 主表逐字一致（C-31），前端 MUST 按 `code` 分支处理（C-34）。
+
+            | code | HTTP | msg |
+            |---|---|---|
+            | 1001 | 400 | 参数校验失败 |
+            | 1002 | 400 | 参数超出允许范围 |
+            | 2001 | 404 | 数据不存在 |
+            | 2002 | 422 | 数据未就绪 |
+            | 3001 | 503 | 地图服务连接失败，请检查 IGServer 是否启动 |
+            | 3002 | 502 | 地图服务返回错误 |
+            | 4001 | 504 | 计算超时，建议缩小范围 |
+            | 5000 | 500 | 系统异常 |
+            | 5001 | 429 | 今日查询额度已用尽 |
+          required: [code, msg, data, traceId]
+          properties:
+            code:
+              type: integer
+              format: int32
+              enum: [1001, 1002, 2001, 2002, 3001, 3002, 4001, 5000, 5001]
+            data:
+              type: object
+              nullable: true
+              description: MUST 为 `null`（A-01）
+
+    SubCategory:
+      type: object
+      required: [l2, l2Name, lifeCircle]
+      properties:
+        l2:
+          type: string
+          description: 中类编码
+          example: CHC
+        l2Name:
+          type: string
+          description: 中类名称
+          example: 社区卫生服务中心
+        lifeCircle:
+          type: integer
+          nullable: true
+          description: 生活圈分钟数；字典未配置时为 `null`
+          example: 15
+
+    Category:
+      type: object
+      required: [l1, l1Name, color, children]
+      properties:
+        l1:
+          type: string
+          enum: [EDU, MED, CUL, WEL, COM]
+        l1Name:
+          type: string
+          example: 医疗卫生
+        color:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$'
+          description: 与字典 `COLOR_HEX` 一致，前端 MUST 直接使用
+          example: '#E05252'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/SubCategory'
+
+    District:
+      type: object
+      required: [code, name]
+      properties:
+        code:
+          type: string
+          enum: ['420111', '420106', '420105']
+        name:
+          type: string
+          example: 洪山区
+
+    Street:
+      type: object
+      required: [code, name, districtCode]
+      properties:
+        code:
+          type: string
+          example: '420111001'
+        name:
+          type: string
+          example: 关山街道
+        districtCode:
+          type: string
+          example: '420111'
+
+    DictData:
+      type: object
+      required: [categories, districts, streets, tiandituToken, dataDate]
+      properties:
+        categories:
+          type: array
+          description: 5 个大类，按 `SORT_NO` 升序
+          items:
+            $ref: '#/components/schemas/Category'
+        districts:
+          type: array
+          description: 恰好 3 条
+          items:
+            $ref: '#/components/schemas/District'
+        streets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Street'
+        tiandituToken:
+          type: string
+          description: 天地图令牌；未配置时为空串 `""`，MUST NOT 返回占位符原文
+          example: ''
+        dataDate:
+          type: string
+          format: date
+          example: '2026-11-05'
+
+    DictResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/DictData'
+
+    Facility:
+      type: object
+      description: |
+        `FACILITY` 要素的对外表示，字段名严格按 `02-data-model.md` §6.2 / §6.3 映射。
+        `FID`、`OBJECTID` 等内部字段 MUST NOT 出现（A-05）。
+      required:
+        - facCode
+        - name
+        - nameRaw
+        - categoryL1
+        - categoryL2
+        - categoryL3
+        - address
+        - districtCode
+        - districtName
+        - streetCode
+        - streetName
+        - communityName
+        - lon
+        - lat
+        - capacity
+        - capacityUnit
+        - area
+        - level
+        - status
+        - srcType
+        - srcDetail
+        - srcDate
+        - confidence
+        - remark
+      properties:
+        facCode:
+          type: string
+          description: '设施唯一编码，格式 `区码-大类-中类-四位序号`'
+          example: 420111-MED-CHC-0007
+        name:
+          type: string
+          description: 标准化名称
+          example: 关山街社区卫生服务中心
+        nameRaw:
+          type: string
+          nullable: true
+          description: 原始名称（采集值）
+          example: 武汉市洪山区关山街社区卫生服务中心
+        categoryL1:
+          type: string
+          description: 'DB `CAT_L1`，JSON 名为 `categoryL1`（例外映射，不是 `catL1`）'
+          enum: [EDU, MED, CUL, WEL, COM]
+        categoryL2:
+          type: string
+          description: 'DB `CAT_L2`'
+          example: CHC
+        categoryL3:
+          type: string
+          nullable: true
+          description: 'DB `CAT_L3`'
+        address:
+          type: string
+          nullable: true
+          example: 武汉市洪山区关山大道 100 号
+        districtCode:
+          type: string
+          example: '420111'
+        districtName:
+          type: string
+          description: 'DB `DISTRICT`（名称），例外映射为 `districtName`'
+          example: 洪山区
+        streetCode:
+          type: string
+          nullable: true
+          example: '420111001'
+        streetName:
+          type: string
+          nullable: true
+          description: 'DB `STREET`（名称），例外映射为 `streetName`'
+          example: 关山街道
+        communityName:
+          type: string
+          nullable: true
+          description: 'DB `COMMUNITY`（名称），例外映射为 `communityName`'
+          example: 关山社区
+        lon:
+          type: number
+          format: double
+          description: 经度，CGCS2000，6 位小数
+          example: 114.398765
+        lat:
+          type: number
+          format: double
+          description: 纬度，CGCS2000，6 位小数
+          example: 30.512345
+        capacity:
+          type: number
+          nullable: true
+          example: 120
+        capacityUnit:
+          type: string
+          nullable: true
+          description: 'DB `CAP_UNIT`，例外映射为 `capacityUnit`'
+          example: 床位
+        area:
+          type: number
+          nullable: true
+          description: 建筑面积（㎡）
+          example: 15000
+        level:
+          type: string
+          nullable: true
+          example: 一级
+        status:
+          type: string
+          enum: [正常, 停办, 在建, 未知]
+        srcType:
+          type: string
+          nullable: true
+          example: 政府名录
+        srcDetail:
+          type: string
+          nullable: true
+          example: 武汉市小学一览表 2026
+        srcDate:
+          type: string
+          format: date
+          nullable: true
+          example: '2026-11-05'
+        confidence:
+          type: string
+          nullable: true
+          example: 高
+        remark:
+          type: string
+          nullable: true
+
+    PageResult:
+      type: object
+      required: [total, page, size, list]
+      properties:
+        total:
+          type: integer
+          description: 满足条件的总数，不是当前页条数（A-07）
+          example: 42
+        page:
+          type: integer
+          example: 1
+        size:
+          type: integer
+          example: 20
+        list:
+          type: array
+          description: 空结果返回 `[]`，MUST NOT 返回 `null`（A-07）
+          items:
+            $ref: '#/components/schemas/Facility'
+
+    FacilityPageResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/PageResult'
+
+    SuggestItem:
+      type: object
+      description: 仅这 4 个字段允许外泄，MUST NOT 透传第三方完整响应（03 §5）
+      required: [name, district, lon, lat]
+      properties:
+        name:
+          type: string
+          example: 关山街社区卫生服务中心
+        district:
+          type: string
+          nullable: true
+          example: 洪山区
+        lon:
+          type: number
+          format: double
+          example: 114.398
+        lat:
+          type: number
+          format: double
+          example: 30.512
+
+    SuggestData:
+      type: object
+      required: [list]
+      properties:
+        list:
+          type: array
+          description: 空结果返回 `[]`，且 `code = 0`
+          items:
+            $ref: '#/components/schemas/SuggestItem'
+
+    SuggestResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/SuggestData'
+
+    StatItem:
+      type: object
+      required: [unitCode, unitName, value, popTotal, facCount]
+      properties:
+        unitCode:
+          type: string
+          example: '420111001'
+        unitName:
+          type: string
+          example: 关山街道
+        value:
+          type: number
+          nullable: true
+          description: 指标值；分母为 0 时为 `null`，MUST NOT 返回 `0`（A-23）
+          example: 2.31
+        popTotal:
+          type: integer
+          nullable: true
+          example: 186000
+        facCount:
+          type: integer
+          example: 43
+
+    StatData:
+      type: object
+      required: [level, metric, unit, dataDate, list]
+      properties:
+        level:
+          type: string
+          enum: [district, street]
+        metric:
+          type: string
+          enum: [count, density, perCapita]
+        unit:
+          type: string
+          enum: [个, 个/km², 个/万人]
+          description: 严格按 `metric` 映射
+        dataDate:
+          type: string
+          format: date
+          example: '2026-11-05'
+        list:
+          type: array
+          description: 按 `unitCode` 升序
+          items:
+            $ref: '#/components/schemas/StatItem'
+
+    StatResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/StatData'
+
+    ServiceAreaReq:
+      type: object
+      required: [categoryL2, travelMode, thresholds]
+      properties:
+        categoryL2:
+          type: string
+          description: 中类编码
+          example: CHC
+        travelMode:
+          type: string
+          enum: [WALK, DRIVE]
+        thresholds:
+          type: array
+          description: 分钟阈值；去重升序处理
+          minItems: 1
+          maxItems: 3
+          items:
+            type: integer
+            enum: [5, 10, 15]
+        districtCode:
+          type: string
+          nullable: true
+          enum: ['420111', '420106', '420105']
+        dissolve:
+          type: boolean
+          default: true
+          description: 是否融合重叠面
+
+    ServiceAreaArea:
+      type: object
+      required: [threshold, geomWkt, coveredCommunityCount]
+      properties:
+        threshold:
+          type: integer
+          enum: [5, 10, 15]
+        geomWkt:
+          type: string
+          description: 结果几何 WKT（`MULTIPOLYGON` 或 `POLYGON`），MUST NOT 为空
+        coveredCommunityCount:
+          type: integer
+
+    ServiceAreaSummary:
+      type: object
+      required: [totalCommunity, uncoveredCommunity, coverageRate]
+      properties:
+        totalCommunity:
+          type: integer
+        uncoveredCommunity:
+          type: integer
+        coverageRate:
+          type: number
+          format: double
+          description: '`1 - uncoveredCommunity / totalCommunity`，3 位小数'
+          example: 0.732
+
+    UncoveredCommunity:
+      type: object
+      required: [resCode, resName, streetName]
+      properties:
+        resCode:
+          type: string
+          example: R0001
+        resName:
+          type: string
+          example: 某某小区
+        streetName:
+          type: string
+          nullable: true
+          example: 关山街道
+
+    ServiceAreaData:
+      type: object
+      required: [taskId, elapsedMs, areas, summary, uncoveredList]
+      properties:
+        taskId:
+          type: string
+          pattern: '^SA-\d{8}-\d{4}$'
+          example: SA-20261021-0001
+        elapsedMs:
+          type: integer
+          description: 耗时；命中 24 h 缓存时为 `0`
+          example: 8420
+        areas:
+          type: array
+          description: 按 `threshold` 升序，每个阈值一条
+          items:
+            $ref: '#/components/schemas/ServiceAreaArea'
+        summary:
+          $ref: '#/components/schemas/ServiceAreaSummary'
+        uncoveredList:
+          type: array
+          items:
+            $ref: '#/components/schemas/UncoveredCommunity'
+
+    ServiceAreaResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/ServiceAreaData'
+
+    AccessibilityReq:
+      type: object
+      required: [categoryL2, thresholdMinutes, decay]
+      properties:
+        categoryL2:
+          type: string
+          example: CHC
+        thresholdMinutes:
+          type: integer
+          description: 只允许 5/10/15，其他值返回 `1002`
+          enum: [5, 10, 15]
+        decay:
+          type: string
+          enum: [GAUSSIAN, LINEAR, BINARY]
+        capacityField:
+          type: string
+          default: CAPACITY
+        districtCode:
+          type: string
+          nullable: true
+          enum: ['420111', '420106', '420105']
+
+    AccessibilityStats:
+      type: object
+      required: [min, max, mean, p50]
+      properties:
+        min:
+          type: number
+          format: double
+          description: 4 位小数
+          example: 0.0
+        max:
+          type: number
+          format: double
+          example: 8.42
+        mean:
+          type: number
+          format: double
+          example: 2.17
+        p50:
+          type: number
+          format: double
+          example: 1.93
+        capacityFallback:
+          type: boolean
+          description: |
+            存在设施 `CAPACITY` 为 `null` 或 0、按 1 兜底计算时为 `true`（03 §8 规则 6）。
+            该键在契约字段表中未列出，由 R7 与 R6 确认后补入（见 `docs/接口约定.md` §9）。
+          example: false
+
+    AccessibilityResult:
+      type: object
+      required: [unitCode, unitName, lon, lat, score, level]
+      properties:
+        unitCode:
+          type: string
+          example: '420111001001'
+        unitName:
+          type: string
+          example: 关山社区
+        lon:
+          type: number
+          format: double
+          example: 114.401
+        lat:
+          type: number
+          format: double
+          example: 30.508
+        score:
+          type: number
+          format: double
+          description: 可达性指数，4 位小数
+          example: 3.72
+        level:
+          type: integer
+          minimum: 1
+          maximum: 5
+
+    AccessibilityData:
+      type: object
+      required: [taskId, elapsedMs, decay, stats, breaks, results]
+      properties:
+        taskId:
+          type: string
+          pattern: '^AC-\d{8}-\d{4}$'
+          example: AC-20261021-0001
+        elapsedMs:
+          type: integer
+          example: 1240
+        decay:
+          type: string
+          enum: [GAUSSIAN, LINEAR, BINARY]
+        stats:
+          $ref: '#/components/schemas/AccessibilityStats'
+        breaks:
+          type: array
+          description: |
+            分级断点，长度 MUST 为 6（5 级），严格递增，首值 = `stats.min`，末值 = `stats.max`。
+            边界情形（全体 `score` 相同导致无法严格递增）的处理见 `docs/接口约定.md` §9，属已知契约缺口。
+          minItems: 6
+          maxItems: 6
+          items:
+            type: number
+            format: double
+        results:
+          type: array
+          description: 每个居住点一条，条数 MUST 等于参与计算的居住点数
+          items:
+            $ref: '#/components/schemas/AccessibilityResult'
+
+    AccessibilityResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/AccessibilityData'
+
+    ExportReq:
+      type: object
+      required: [type, format, params]
+      properties:
+        type:
+          type: string
+          enum: [STAT_DISTRICT, COVERAGE, ANALYSIS]
+        format:
+          type: string
+          enum: [xlsx, csv]
+        params:
+          type: object
+          additionalProperties: true
+          description: 与界面当前筛选条件一致，MUST NOT 被忽略
+        filename:
+          type: string
+          minLength: 1
+          maxLength: 50
+          default: export
+          description: 文件名前缀，不含扩展名与时间戳
+
+    HealthComponents:
+      type: object
+      required: [mysql, igs, odMatrix]
+      properties:
+        mysql:
+          type: string
+          enum: [UP, DOWN]
+        igs:
+          type: string
+          enum: [UP, DOWN]
+        odMatrix:
+          type: string
+          enum: [LOADED, MISSING]
+
+    HealthData:
+      type: object
+      required: [status, components, version]
+      properties:
+        status:
+          type: string
+          enum: [UP, DEGRADED, DOWN]
+        components:
+          $ref: '#/components/schemas/HealthComponents'
+        version:
+          type: string
+          description: 后端语义化版本
+          example: 1.0.0
+
+    HealthResponse:
+      allOf:
+        - $ref: '#/components/schemas/Wrapper'
+        - type: object
+          required: [data]
+          properties:
+            data:
+              $ref: '#/components/schemas/HealthData'
