@@ -240,3 +240,17 @@ export {
   HEAT_PANE_ID,
   HEAT_PANE_Z_INDEX,
 } from './heatmap'
+
+// ==== 聚合图（T-047，实现在 ./cluster） ====
+export {
+  applyCluster,
+  clearCluster,
+  normalizeClusterOptions,
+  createClusterLayer,
+  buildClusterMarkers,
+  groupPointsByPixel,
+  toggleFacilityLayer,
+  CLUSTER_LAYER_ID,
+  FACILITY_LAYER_ID,
+  CLUSTER_LABEL_MIN_FONT_PX,
+} from './cluster'
