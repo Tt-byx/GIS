@@ -226,3 +226,17 @@ export function boundaryUnitCode(feature) {
   }
   return attrs.STREET_CODE || attrs.DISTRICT_CODE
 }
+
+// ==== 热力图（T-046，实现在 ./heatmap，AR-21：对外统一从 index 导入） ====
+export {
+  applyHeatmap,
+  clearHeatmap,
+  normalizeHeatOptions,
+  ensureHeatPane,
+  createHeatmapLayer,
+  drawHeat,
+  buildColorRamp,
+  HEAT_LAYER_ID,
+  HEAT_PANE_ID,
+  HEAT_PANE_Z_INDEX,
+} from './heatmap'
