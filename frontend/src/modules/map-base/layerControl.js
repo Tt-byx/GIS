@@ -64,16 +64,6 @@ export function reorderLayers(orderedIds) {
 }
 
 /**
- * 切换底图（FR-M1-06）：状态与事件先行，实际瓦片切换由 map-base/basemap.js（T-041）完成。
- * @param {string} basemap 底图标识 mapgis / tianditu_vec / tianditu_img
- */
-export function switchBasemap(basemap) {
-  const store = useMapStore()
-  store.setBasemap(basemap)
-  eventBus.emit(EVENTS.BASEMAP_CHANGE, { basemap })
-}
-
-/**
  * 批量应用 store 图层状态（集成期由 initMap 调用一次）。
  */
 export function applyLayerState() {
@@ -86,4 +76,4 @@ export function applyLayerState() {
   })
 }
 
-export default { toggleLayer, changeOpacity, reorderLayers, switchBasemap, applyLayerState }
+export default { toggleLayer, changeOpacity, reorderLayers, applyLayerState }
