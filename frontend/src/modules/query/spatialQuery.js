@@ -9,7 +9,7 @@
 import * as turf from '@turf/turf'
 import { createFeatureServer, createQueryPolygon } from '@/core/serviceFactory'
 import { getMap } from '@/core/mapInstance'
-import { registerLayer, unregisterLayer, hasLayer, getLayer } from '@/core/layerRegistry'
+import { registerLayer, removeFromMap } from '@/core/layerRegistry'
 import { eventBus, EVENTS } from '@/core/eventBus'
 import { LAYERS } from '@/config'
 
@@ -117,7 +117,7 @@ function drawQueryShape(polygonGeo) {
   if (!map) {
     throw new Error('地图尚未初始化，无法绘制查询图形')
   }
-  removeRegisteredLayer(DRAWN_LAYER_ID)
+  removeFromMap(DRAWN_LAYER_ID)
   const layer = L.geoJSON(polygonGeo, {
     style: { color: '#1D4ED8', weight: 2, fillOpacity: 0.08, dashArray: '6 4' },
     interactive: false,
@@ -136,7 +136,7 @@ function showHighlight(rawFeatures) {
   if (!map) {
     throw new Error('地图尚未初始化，无法显示结果高亮')
   }
-  removeRegisteredLayer(HIGHLIGHT_LAYER_ID)
+  removeFromMap(HIGHLIGHT_LAYER_ID)
   if (rawFeatures.length === 0) {
     return
   }
@@ -146,23 +146,6 @@ function showHighlight(rawFeatures) {
   )
   layer.addTo(map)
   registerLayer(HIGHLIGHT_LAYER_ID, layer)
-}
-
-/**
- * 移除已登记的地图图层（幂等）。
- * @param {string} layerId 图层标识
- * @returns {void}
- */
-function removeRegisteredLayer(layerId) {
-  if (!hasLayer(layerId)) {
-    return
-  }
-  const layer = getLayer(layerId)
-  const map = getMap()
-  if (map && layer) {
-    map.removeLayer(layer)
-  }
-  unregisterLayer(layerId)
 }
 
 /**
@@ -305,6 +288,6 @@ export async function queryByClick(options) {
  * @returns {void}
  */
 export function clearGeometry() {
-  removeRegisteredLayer(DRAWN_LAYER_ID)
-  removeRegisteredLayer(HIGHLIGHT_LAYER_ID)
+  removeFromMap(DRAWN_LAYER_ID)
+  removeFromMap(HIGHLIGHT_LAYER_ID)
 }

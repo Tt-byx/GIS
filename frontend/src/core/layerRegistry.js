@@ -2,6 +2,7 @@
  * 图层注册表（先行实现；显隐/透明度/顺序的编排归 R3 的 map-base/layerControl.js）。
  * 职责：layerId → Leaflet layer 的唯一登记处，供各模块按 id 取图层，避免互相持有引用。
  */
+import { getMap } from '@/core/mapInstance'
 
 /** @type {Map<string, object>} */
 const registry = new Map()
@@ -53,4 +54,22 @@ export function hasLayer(layerId) {
  */
 export function listLayers() {
   return Array.from(registry, ([layerId, layer]) => ({ layerId, layer }))
+}
+
+/**
+ * 把已登记图层从地图移除并注销（幂等；X-09：各模块禁止重复实现此逻辑）。
+ * @param {string} layerId 图层标识
+ * @returns {boolean} 是否实际移除
+ */
+export function removeFromMap(layerId) {
+  if (!registry.has(layerId)) {
+    return false
+  }
+  const layer = registry.get(layerId)
+  const map = getMap()
+  if (map && layer) {
+    map.removeLayer(layer)
+  }
+  registry.delete(layerId)
+  return true
 }
