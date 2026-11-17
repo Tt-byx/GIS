@@ -1,0 +1,38 @@
+# 后端唯一配置源。键名与 SPEC/04-architecture.md §5.2 一致，改这里必须同步通知前端。
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gis-backend
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/gis_facility?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&connectTimeout=2000&socketTimeout=3000
+    username: ${DB_USER:root}
+    password: ${DB_PASS:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 2000
+      initialization-fail-timeout: -1
+      maximum-pool-size: 5
+      minimum-idle: 1
+
+# AR-27：Key/密码只允许经环境变量注入，此处不得写明文
+igs:
+  ip: 127.0.0.1
+  port: 6163
+  mapDoc: wh_facility
+  timeoutMs: 60000
+
+amap:
+  key: ${AMAP_KEY:}
+
+od:
+  matrixPath: ./data/od_matrix.csv
+
+export:
+  dir: ./data/export
+
+logging:
+  level:
+    root: INFO
+    com.example.gis: INFO
