@@ -43,6 +43,25 @@ export function createFeatureServer(docName = MAP_DOC_NAME) {
 }
 
 /**
+ * 构造查询几何 Polygon（AR-17：Zondy 类的构造收敛于 core）。
+ * 坐标为 GeoJSON 环数组 [[[lon, lat], ...], ...]。
+ * @param {Array<Array<Array<number>>>} rings GeoJSON 多边形环
+ * @returns {object} zondy.geometry.Polygon 实例
+ */
+export function createQueryPolygon(rings) {
+  return new zondy.geometry.Polygon({ coordinates: rings })
+}
+
+/**
+ * 构造查询几何 Point。
+ * @param {Array<number>} coords [lon, lat]
+ * @returns {object} zondy.geometry.Point 实例
+ */
+export function createQueryPoint(coords) {
+  return new zondy.geometry.Point({ coordinates: coords })
+}
+
+/**
  * 创建 Leaflet 版瓦片底图图层对象。
  * @param {string} tileServiceUrl 瓦片服务完整路径（由 R3 从配置传入）
  * @returns {object} zondy.leaflet.layer.IGSTileLayer 实例
