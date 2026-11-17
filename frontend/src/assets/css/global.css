@@ -1,0 +1,13 @@
+/* 全局基础样式（最小集；视觉规范归 R3 定稿） */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+#app {
+  height: 100%;
+}

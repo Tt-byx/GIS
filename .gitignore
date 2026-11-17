@@ -27,6 +27,7 @@ replay_pid*
 target/
 build/
 out/
+dist/
 .gradle/
 !gradle/wrapper/gradle-wrapper.jar
 
@@ -60,6 +61,7 @@ venv/
 logs/
 tmp/
 *.tmp
+scripts/.log/
 
 # ==== 操作系统 ====
 .DS_Store
