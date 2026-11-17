@@ -8,7 +8,10 @@ set -u
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 FE="$ROOT/frontend"
 LOG_DIR="$ROOT/scripts/.log"
-mkdir -p "$LOG_DIR"
+TMP_DIR="$ROOT/scripts/.tmp"
+mkdir -p "$LOG_DIR" "$TMP_DIR"
+# 沙箱/受限环境下系统 Temp 目录可能不可写（vitest IPC 缓存 EPERM），统一指到仓库内
+export TMPDIR="$TMP_DIR" TMP="$TMP_DIR" TEMP="$TMP_DIR"
 
 FINAL_EXIT=0
 
