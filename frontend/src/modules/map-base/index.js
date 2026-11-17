@@ -1,7 +1,11 @@
 /**
  * M1 地图基础模块对外出口（AR-21：外部 MUST 只从 index.js 导入）。
- * 当前交付 ensureMap 与 layerControl；measure/basemap/initMap 归 T-041 后续补充。
+ * T-041 全量：initMap / setBasemap / zoomIn / zoomOut / resetView / prevView /
+ * measure / clearMeasure / toggleFullscreen / screenshot。
  */
-export { toggleLayer, changeOpacity, reorderLayers, switchBasemap, applyLayerState } from './layerControl'
-export { ensureMap } from './mapInit'
-export { default as layerControlApi } from './layerControl'
+export { toggleLayer, changeOpacity, reorderLayers, applyLayerState } from './layerControl'
+export { setBasemap } from './basemap'
+export { initMap, ensureMap, popHistory } from './mapInit'
+export { zoomIn, zoomOut, resetView, prevView } from './zoom'
+export { measure, clearMeasure } from './measure'
+export { toggleFullscreen, screenshot } from './capture'
