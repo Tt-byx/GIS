@@ -1,6 +1,6 @@
 package com.example.gis.service;
 
-import com.example.gis.client.IgsClient;
+import com.example.gis.config.IgsProperties;
 import com.example.gis.dto.HealthResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Connection;
@@ -25,14 +27,14 @@ public class HealthService {
     private static final String VERSION = "0.1.0";
 
     private final DataSource dataSource;
-    private final IgsClient igsClient;
+    private final IgsProperties igsProperties;
 
     @Value("${od.matrixPath}")
     private String odMatrixPath;
 
     public HealthResponse check() {
         String mysql = checkMysql();
-        String igs = igsClient.ping() ? "UP" : "DOWN";
+        String igs = checkIgs();
         String odMatrix = Files.isRegularFile(Path.of(odMatrixPath)) ? "LOADED" : "MISSING";
 
         HealthResponse.Components components = new HealthResponse.Components();
@@ -59,6 +61,17 @@ public class HealthService {
             return connection.isValid(2) ? "UP" : "DOWN";
         } catch (Exception e) {
             log.warn("数据库健康检查失败: {}", e.getMessage());
+            return "DOWN";
+        }
+    }
+
+    /** T-004 阶段仅做端口连通性探测，T-026 再替换为 IgsClient 的真实探测。 */
+    private String checkIgs() {
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(igsProperties.getIp(), igsProperties.getPort()), 2000);
+            return "UP";
+        } catch (Exception e) {
+            log.warn("IGServer 健康检查失败: {}", e.getMessage());
             return "DOWN";
         }
     }
