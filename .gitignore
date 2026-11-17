@@ -62,6 +62,7 @@ logs/
 tmp/
 *.tmp
 scripts/.log/
+scripts/.tmp/
 
 # ==== 操作系统 ====
 .DS_Store
