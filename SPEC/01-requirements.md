@@ -3,10 +3,10 @@
 | 字段 | 值 |
 |---|---|
 | `spec.id` | SPEC-01 |
-| `spec.version` | 1.0.0 |
+| `spec.version` | 1.1.0 |
 | `spec.status` | FROZEN |
 | `spec.owner` | 项目组 |
-| `spec.updated` | 2026-10-21 |
+| `spec.updated` | 2026-11-18 |
 | `spec.depends_on` | `00-overview.md`、`02-data-model.md`、`03-api-contract.md` |
 | `spec.authority` | 第 4 顺位。字段冲突以 02 为准，接口冲突以 03 为准 |
 
@@ -363,7 +363,7 @@
 **输入**
 - `categoryL1` : string, 见 02 字典, 默认空 — 大类筛选
 - `categoryL2` : string, 见 02 字典, 默认空 — 中类筛选
-- `districtCode` : string, `420111|420106|420105`, 默认空
+- `districtCode` : string, `420107|420106|420105`, 默认空
 - `streetCode` : string, 见字典, 默认空
 - `keyword` : string, 长度 `0..50`, 默认空 — 名称模糊匹配
 - `page` : int, `>=1`, 默认 `1`
@@ -535,7 +535,7 @@
 | AC ID | Given | When | Then |
 |---|---|---|---|
 | `AC-M2-05-1` | 页面正常 | 输入 1 个字符 | 不发请求（Network 面板无 `/suggest` 请求） |
-| `AC-M2-05-2` | 页面正常 | 输入"关山" | 300ms 后发 1 次请求 |
+| `AC-M2-05-2` | 页面正常 | 输入"青山" | 300ms 后发 1 次请求 |
 | `AC-M2-05-3` | 有候选 | 选中第 1 项 | zoom=16 且地图中心等于该点坐标（±10m） |
 
 **禁止事项**
@@ -1340,3 +1340,4 @@
 | 版本 | 日期 | 修订内容 |
 |---|---|---|
 | 1.0.0 | 2026-10-21 | 初始发布，30 条 P0/P1 需求 + 6 条 P2 需求（含 FR-M6 四项），共 36 条 FR |
+| 1.1.0 | 2026-11-18 | districtCode 枚举与检索示例调整为青山区（420107） |
