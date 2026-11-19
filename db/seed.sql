@@ -1,7 +1,7 @@
 -- ============================================================
 -- 城市公共服务设施分布 WebGIS 平台 - 种子数据
--- 版本: 1.0.0  日期: 2026-10-21
--- 依据: SPEC/02-data-model.md §5
+-- 版本: 1.1.0  日期: 2026-11-18
+-- 依据: SPEC/02-data-model.md §5（v1.1.0，研究区含青山区 420107）
 -- 说明: INSERT 的字段与取值逐字取自 SPEC；为满足 DM-16 幂等，
 --       每条 INSERT 附加 ON DUPLICATE KEY UPDATE，重复执行不产生重复行。
 -- 执行: mysql --default-character-set=utf8mb4 -u root < db/seed.sql
@@ -48,7 +48,7 @@ ON DUPLICATE KEY UPDATE
 
 -- 行政区（3 条）
 INSERT INTO DICT_DISTRICT (DIST_CODE, DIST_NAME, AREA_KM2, POP_TOTAL, SORT_NO) VALUES
-('420111','洪山区',570.00,1406000,1),
+('420107','青山区', 45.00, 452000,1),
 ('420106','武昌区', 82.00,1097000,2),
 ('420105','汉阳区',111.00, 837000,3)
 ON DUPLICATE KEY UPDATE
