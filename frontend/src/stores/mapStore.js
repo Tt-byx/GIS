@@ -120,6 +120,37 @@ export const useMapStore = defineStore('map', {
     },
 
     /**
+     * 添加图层（分析结果等动态图层加入 analysis 分组，FR-M4-06）
+     * @param {object} layer 图层对象
+     */
+    addLayer(layer) {
+      const existing = this.getLayerById(layer.id)
+      if (existing) {
+        Object.assign(existing, layer)
+      } else {
+        this.layers.push(layer)
+      }
+    },
+
+    /**
+     * 移除指定图层
+     * @param {string} layerId 图层标识
+     */
+    removeLayer(layerId) {
+      const idx = this.layers.findIndex((item) => item.id === layerId)
+      if (idx !== -1) {
+        this.layers.splice(idx, 1)
+      }
+    },
+
+    /**
+     * 清空全部分析结果图层（FR-M4-06）
+     */
+    clearAnalysisLayers() {
+      this.layers = this.layers.filter((item) => item.group !== 'analysis')
+    },
+
+    /**
      * 切换图例模式（FR-M3-07）。
      * @param {string} mode category / class / heat / cluster
      * @param {Array<string>} [breaks] 分级区间文本，仅 class 模式使用
