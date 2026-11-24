@@ -222,13 +222,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuggestResponse'
         '400':
-          description: '`kw` 过短（`1001`）'
+          description: '`kw` 过短（`1001`）或 `kw` 超长 / `limit` 越界（`1002`）'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
         '429':
           description: 第三方配额超限（`5001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '502':
+          description: 第三方返回业务错误（`3002`）
           content:
             application/json:
               schema:
