@@ -116,14 +116,14 @@ paths:
           description: 行政区筛选
           schema:
             type: string
-            enum: ['420111', '420106', '420105']
+            enum: ['420107', '420106', '420105']
         - name: streetCode
           in: query
           required: false
           description: 街道筛选，取值见 API-01 字典
           schema:
             type: string
-            example: '420111001'
+            example: '420107001'
         - name: keyword
           in: query
           required: false
@@ -222,13 +222,19 @@ paths:
               schema:
                 $ref: '#/components/schemas/SuggestResponse'
         '400':
-          description: '`kw` 过短（`1001`）'
+          description: '`kw` 过短（`1001`）或 `kw` 超长 / `limit` 越界（`1002`）'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiError'
         '429':
           description: 第三方配额超限（`5001`）
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+        '502':
+          description: 第三方返回业务错误（`3002`）
           content:
             application/json:
               schema:
@@ -282,7 +288,7 @@ paths:
           description: 仅在 `level=street` 时生效：把街道列表限定在该区内
           schema:
             type: string
-            enum: ['420111', '420106', '420105']
+            enum: ['420107', '420106', '420105']
       responses:
         '200':
           description: 成功
@@ -328,7 +334,7 @@ paths:
               categoryL2: CHC
               travelMode: WALK
               thresholds: [5, 10, 15]
-              districtCode: '420111'
+              districtCode: '420107'
               dissolve: true
       responses:
         '200':
@@ -407,7 +413,7 @@ paths:
               thresholdMinutes: 15
               decay: GAUSSIAN
               capacityField: CAPACITY
-              districtCode: '420111'
+              districtCode: '420107'
       responses:
         '200':
           description: 成功
@@ -628,10 +634,10 @@ components:
       properties:
         code:
           type: string
-          enum: ['420111', '420106', '420105']
+          enum: ['420107', '420106', '420105']
         name:
           type: string
-          example: 洪山区
+          example: 青山区
 
     Street:
       type: object
@@ -639,13 +645,13 @@ components:
       properties:
         code:
           type: string
-          example: '420111001'
+          example: '420107001'
         name:
           type: string
-          example: 关山街道
+          example: 红钢城街道
         districtCode:
           type: string
-          example: '420111'
+          example: '420107'
 
     DictData:
       type: object
@@ -717,16 +723,16 @@ components:
         facCode:
           type: string
           description: '设施唯一编码，格式 `区码-大类-中类-四位序号`'
-          example: 420111-MED-CHC-0007
+          example: 420107-MED-CHC-0007
         name:
           type: string
           description: 标准化名称
-          example: 关山街社区卫生服务中心
+          example: 红钢城街社区卫生服务中心
         nameRaw:
           type: string
           nullable: true
           description: 原始名称（采集值）
-          example: 武汉市洪山区关山街社区卫生服务中心
+          example: 武汉市青山区红钢城街社区卫生服务中心
         categoryL1:
           type: string
           description: 'DB `CAT_L1`，JSON 名为 `categoryL1`（例外映射，不是 `catL1`）'
@@ -742,28 +748,28 @@ components:
         address:
           type: string
           nullable: true
-          example: 武汉市洪山区关山大道 100 号
+          example: 武汉市青山区红钢城大街 100 号
         districtCode:
           type: string
-          example: '420111'
+          example: '420107'
         districtName:
           type: string
           description: 'DB `DISTRICT`（名称），例外映射为 `districtName`'
-          example: 洪山区
+          example: 青山区
         streetCode:
           type: string
           nullable: true
-          example: '420111001'
+          example: '420107001'
         streetName:
           type: string
           nullable: true
           description: 'DB `STREET`（名称），例外映射为 `streetName`'
-          example: 关山街道
+          example: 红钢城街道
         communityName:
           type: string
           nullable: true
           description: 'DB `COMMUNITY`（名称），例外映射为 `communityName`'
-          example: 关山社区
+          example: 红钢城社区
         lon:
           type: number
           format: double
@@ -852,11 +858,11 @@ components:
       properties:
         name:
           type: string
-          example: 关山街社区卫生服务中心
+          example: 红钢城街社区卫生服务中心
         district:
           type: string
           nullable: true
-          example: 洪山区
+          example: 青山区
         lon:
           type: number
           format: double
@@ -891,10 +897,10 @@ components:
       properties:
         unitCode:
           type: string
-          example: '420111001'
+          example: '420107001'
         unitName:
           type: string
-          example: 关山街道
+          example: 红钢城街道
         value:
           type: number
           nullable: true
@@ -963,7 +969,7 @@ components:
         districtCode:
           type: string
           nullable: true
-          enum: ['420111', '420106', '420105']
+          enum: ['420107', '420106', '420105']
         dissolve:
           type: boolean
           default: true
@@ -1009,7 +1015,7 @@ components:
         streetName:
           type: string
           nullable: true
-          example: 关山街道
+          example: 红钢城街道
 
     ServiceAreaData:
       type: object
@@ -1064,7 +1070,7 @@ components:
         districtCode:
           type: string
           nullable: true
-          enum: ['420111', '420106', '420105']
+          enum: ['420107', '420106', '420105']
 
     AccessibilityStats:
       type: object
@@ -1100,10 +1106,10 @@ components:
       properties:
         unitCode:
           type: string
-          example: '420111001001'
+          example: '420107001001'
         unitName:
           type: string
-          example: 关山社区
+          example: 红钢城社区
         lon:
           type: number
           format: double

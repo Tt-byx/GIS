@@ -1,0 +1,1760 @@
+<?xml version="1.0" encoding="gb2312" standalone="no"?>
+<datacenter>
+  <root filePath="D:\learnabout\GIS\work\GIS\data\mapdoc\wh_facility.mapx" title="wh_facility" subject="" author="" category="" keywords="" comments="" version="10.7.10.10">
+    <ClibDir6x>
+    </ClibDir6x>
+    <SlibDir6x>
+    </SlibDir6x>
+    <subnode name="wh_facility" mapguid="b5252cad-2281-46b6-992a-8c7be0098b34" LegendBoardGUID="00000000-0000-0000-0000-000000000000" LegendBoardID="-1" type="Map" class="CreateMap@GisCartoPrj.dll">
+      <description>
+      </description>
+      <isDisplayOnLayout>1</isDisplayOnLayout>
+      <isCustomEntireExtent>0</isCustomEntireExtent>
+      <customEntireExtent xmin="0.0" ymin="0.0" xmax="0.0" ymax="0.0">
+      </customEntireExtent>
+      <viewExtent xmin="114.00193251598746" ymin="30.334295" xmax="114.68167728401254" ymax="30.676852">
+      </viewExtent>
+      <minScale>0.0</minScale>
+      <maxScale>0.0</maxScale>
+      <ScaleRangeMinScale>0.0</ScaleRangeMinScale>
+      <ScaleRangeMaxScale>0.0</ScaleRangeMaxScale>
+      <isFixedScalesDisplay>0</isFixedScalesDisplay>
+      <isProjTrans>0</isProjTrans>
+      <rotateCenter>
+        <X>0.0</X>
+        <Y>0.0</Y>
+      </rotateCenter>
+      <rotateAngle>0.0</rotateAngle>
+      <backColor>9</backColor>
+      <backgroundImage>
+      </backgroundImage>
+      <displayHint>1</displayHint>
+      <imageLayerZoom>-1</imageLayerZoom>
+      <clipType>0</clipType>
+      <clipRect xmin="0.0" ymin="0.0" xmax="0.0" ymax="0.0">
+      </clipRect>
+      <clipPolygon>
+      </clipPolygon>
+      <clipMultiPolygon>
+      </clipMultiPolygon>
+      <UseSymbolLevels>0</UseSymbolLevels>
+      <fixedMapScales>
+      </fixedMapScales>
+      <subnode name="FACILITY" type="SFeatureLayer" geometryType="1" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
+        <url>GDBP://MapGisLocal/wh_facility/ds/FACILITY/sfcls/FACILITY</url>
+        <layerWeight>0</layerWeight>
+        <IsSnaped>1</IsSnaped>
+        <state>VISIBLE</state>
+        <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </directIndex>
+        <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </reverseIndex>
+        <conditions>0000000000000000000000000000000000</conditions>
+        <subnode name="单值专题图(CAT_L1)" type="UniqueTheme" class="CreateGTheme@GisCartoPrj.dll">
+          <state>VISIBLE</state>
+          <geomInfoType>1</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <expression>CAT_L1</expression>
+          <infoSource>1</infoSource>
+          <otherInfoSource>1</otherInfoSource>
+          <defaultInfo caption="未参与分类的值" isVisible="0" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0">
+            <geoInfo>
+              <pntInfo lib="0" id="5" height="2.0" width="2.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="30;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+              </pntInfo>
+            </geoInfo>
+          </defaultInfo>
+          <uniqueInfos>
+            <uniqueInfo caption="社区服务" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="COM">
+              <geoInfo>
+                <pntInfo lib="0" id="216" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="16;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                </pntInfo>
+              </geoInfo>
+            </uniqueInfo>
+            <uniqueInfo caption="文化体育" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="CUL">
+              <geoInfo>
+                <pntInfo lib="0" id="214" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="19;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                </pntInfo>
+              </geoInfo>
+            </uniqueInfo>
+            <uniqueInfo caption="教育设施" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="EDU">
+              <geoInfo>
+                <pntInfo lib="0" id="212" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="22;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                </pntInfo>
+              </geoInfo>
+            </uniqueInfo>
+            <uniqueInfo caption="医疗卫生" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="MED">
+              <geoInfo>
+                <pntInfo lib="0" id="213" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="25;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                </pntInfo>
+              </geoInfo>
+            </uniqueInfo>
+            <uniqueInfo caption="社会福利" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="WEL">
+              <geoInfo>
+                <pntInfo lib="0" id="215" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="28;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                </pntInfo>
+              </geoInfo>
+            </uniqueInfo>
+          </uniqueInfos>
+        </subnode>
+        <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
+          <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+            </annInfo>
+          </geoInfo>
+          <labelExpression>
+          </labelExpression>
+          <geomType>pnt</geomType>
+          <priority>1</priority>
+          <isLabelClientOutside>false</isLabelClientOutside>
+          <backType>1</backType>
+          <highlightClr>0</highlightClr>
+          <backGeoInfo>
+            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="9;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </linInfo>
+          </backGeoInfo>
+          <numericPrecision>0</numericPrecision>
+          <isNewLineToLabel>false</isNewLineToLabel>
+          <maxLengthPreLine>0</maxLengthPreLine>
+          <isLabelUnPlaced>false</isLabelUnPlaced>
+          <reducedSizeForContinulLabel>0</reducedSizeForContinulLabel>
+          <isHighlightLabelUnPlaced>false</isHighlightLabelUnPlaced>
+          <labelFormat>
+          </labelFormat>
+          <placeInfo type="1" offset="0.0" eightLocationPrioritys="1;2;3;4;5;6;7;8" anyLocationCount="1" anyLocationPrioritys="0.0" isAvoidPointSymbol="0" isFollowPointSymbolBorder="0">
+          </placeInfo>
+        </label>
+        <IsUseSuperLink>0</IsUseSuperLink>
+        <SuperLinkFieldName>
+        </SuperLinkFieldName>
+        <SuperLinkmode>1</SuperLinkmode>
+        <LayerControl LayerNo="0">
+          <LayerState>
+          </LayerState>
+        </LayerControl>
+        <systemLibGUID>00000000-0000-0000-0000-000000000000</systemLibGUID>
+        <vectorRenderInfoNew>
+          <IsShowSymbol>1</IsShowSymbol>
+          <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
+          <ShowSymbolMaxScale>0.0</ShowSymbolMaxScale>
+          <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
+          <FollowZoomMinScale>1e100</FollowZoomMinScale>
+          <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
+          <sTransParency>0</sTransParency>
+          <IsShowCoord>0</IsShowCoord>
+          <ShowCoordColor>1</ShowCoordColor>
+          <ShowCoordSize>4.0</ShowCoordSize>
+          <IsDispRect>0</IsDispRect>
+          <MinVisibleSize>0.0</MinVisibleSize>
+          <IsShowLinDire>0</IsShowLinDire>
+          <direLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;2;2" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+          </direLinInfo>
+          <IsReduceLin>0</IsReduceLin>
+          <ReduceLinStep>5.0</ReduceLinStep>
+          <SameAs6xLine>0</SameAs6xLine>
+          <NotDraw0Lin>0</NotDraw0Lin>
+          <IsFillReg>1</IsFillReg>
+          <FillRegMinScale>1e100</FillRegMinScale>
+          <FillRegMaxScale>0.0</FillRegMaxScale>
+          <IsShowRegBorder>0</IsShowRegBorder>
+          <ShowRegBorderMinScale>1e100</ShowRegBorderMinScale>
+          <ShowRegBorderMaxScale>0.0</ShowRegBorderMaxScale>
+          <RegBorderLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+          </RegBorderLinInfo>
+          <IsRegBorderShowSymbol>0</IsRegBorderShowSymbol>
+          <RegBorderShowSymbolMinScale>1e100</RegBorderShowSymbolMinScale>
+          <RegBorderShowSymbolMaxScale>0.0</RegBorderShowSymbolMaxScale>
+          <IsRegBorderFollowZoom>0</IsRegBorderFollowZoom>
+          <RegBorderFollowZoomMinScale>1e100</RegBorderFollowZoomMinScale>
+          <RegBorderFollowZoomMaxScale>0.0</RegBorderFollowZoomMaxScale>
+          <PixSizeofFilterSmallFeature>1</PixSizeofFilterSmallFeature>
+          <SameAs6xFont>0</SameAs6xFont>
+        </vectorRenderInfoNew>
+        <featureSortInfo field="" asce="1">
+        </featureSortInfo>
+        <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+        </Renders>
+        <VirtualFields>
+        </VirtualFields>
+        <minScale>0.0</minScale>
+        <maxScale>0.0</maxScale>
+        <ScaleRange MinScale="0.0" MaxScale="0.0">
+        </ScaleRange>
+        <Extend>
+          <Expand>true</Expand>
+        </Extend>
+      </subnode>
+      <subnode name="DISTRICT" type="SFeatureLayer" geometryType="3" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
+        <url>GDBP://MapGisLocal/wh_facility/ds/DISTRICT/sfcls/DISTRICT</url>
+        <layerWeight>0</layerWeight>
+        <IsSnaped>1</IsSnaped>
+        <state>ACTIVE</state>
+        <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </directIndex>
+        <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </reverseIndex>
+        <conditions>0000000000000000000000000000000000</conditions>
+        <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
+          <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+            </annInfo>
+          </geoInfo>
+          <labelExpression>
+          </labelExpression>
+          <geomType>pnt</geomType>
+          <priority>1</priority>
+          <isLabelClientOutside>false</isLabelClientOutside>
+          <backType>1</backType>
+          <highlightClr>0</highlightClr>
+          <backGeoInfo>
+            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="9;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </linInfo>
+          </backGeoInfo>
+          <numericPrecision>0</numericPrecision>
+          <isNewLineToLabel>false</isNewLineToLabel>
+          <maxLengthPreLine>0</maxLengthPreLine>
+          <isLabelUnPlaced>false</isLabelUnPlaced>
+          <reducedSizeForContinulLabel>0</reducedSizeForContinulLabel>
+          <isHighlightLabelUnPlaced>false</isHighlightLabelUnPlaced>
+          <labelFormat>
+          </labelFormat>
+          <placeInfo type="1" offset="0.0" eightLocationPrioritys="1;2;3;4;5;6;7;8" anyLocationCount="1" anyLocationPrioritys="0.0" isAvoidPointSymbol="0" isFollowPointSymbolBorder="0">
+          </placeInfo>
+        </label>
+        <IsUseSuperLink>0</IsUseSuperLink>
+        <SuperLinkFieldName>无</SuperLinkFieldName>
+        <SuperLinkmode>1</SuperLinkmode>
+        <LayerControl LayerNo="0">
+          <LayerState>
+          </LayerState>
+        </LayerControl>
+        <systemLibGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</systemLibGUID>
+        <vectorRenderInfoNew>
+          <IsShowSymbol>1</IsShowSymbol>
+          <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
+          <ShowSymbolMaxScale>0.0</ShowSymbolMaxScale>
+          <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
+          <FollowZoomMinScale>1e100</FollowZoomMinScale>
+          <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
+          <sTransParency>90</sTransParency>
+          <IsShowCoord>0</IsShowCoord>
+          <ShowCoordColor>1</ShowCoordColor>
+          <ShowCoordSize>4.0</ShowCoordSize>
+          <IsDispRect>0</IsDispRect>
+          <MinVisibleSize>0.0</MinVisibleSize>
+          <IsShowLinDire>0</IsShowLinDire>
+          <direLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;2;2" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+          </direLinInfo>
+          <IsReduceLin>0</IsReduceLin>
+          <ReduceLinStep>5.0</ReduceLinStep>
+          <SameAs6xLine>0</SameAs6xLine>
+          <NotDraw0Lin>0</NotDraw0Lin>
+          <IsFillReg>1</IsFillReg>
+          <FillRegMinScale>1e100</FillRegMinScale>
+          <FillRegMaxScale>0.0</FillRegMaxScale>
+          <IsShowRegBorder>0</IsShowRegBorder>
+          <ShowRegBorderMinScale>1e100</ShowRegBorderMinScale>
+          <ShowRegBorderMaxScale>0.0</ShowRegBorderMaxScale>
+          <RegBorderLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+          </RegBorderLinInfo>
+          <IsRegBorderShowSymbol>0</IsRegBorderShowSymbol>
+          <RegBorderShowSymbolMinScale>1e100</RegBorderShowSymbolMinScale>
+          <RegBorderShowSymbolMaxScale>0.0</RegBorderShowSymbolMaxScale>
+          <IsRegBorderFollowZoom>0</IsRegBorderFollowZoom>
+          <RegBorderFollowZoomMinScale>1e100</RegBorderFollowZoomMinScale>
+          <RegBorderFollowZoomMaxScale>0.0</RegBorderFollowZoomMaxScale>
+          <PixSizeofFilterSmallFeature>1</PixSizeofFilterSmallFeature>
+          <SameAs6xFont>0</SameAs6xFont>
+        </vectorRenderInfoNew>
+        <featureSortInfo field="" asce="1">
+        </featureSortInfo>
+        <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+          <render class="CGBasicLabelEngineRenderer">
+            <RenderType>1</RenderType>
+            <labelItemGroup>
+              <labelItem>
+                <annotateLayerInfo labelClassName="默认" displayAnnotation="1" labelPriority="3" maxScale="0.0" minScale="0.0" sqlWhereClause="">
+                </annotateLayerInfo>
+                <labelEngineLayerInfo labelItemID="-1">
+                  <basicOverposterInfo>
+                    <commonInfo featureType="3" featureWeight="0" drawUnplacedLabels="0" highlightUnplacedLabels="0" reduceSizeForUnplacedLabels="0" allInsideClient="0" labelWeight="1" buffer="0.0" distanceFromFeature="0.0" numLabelsOption="3">
+                    </commonInfo>
+                    <fittingStrategys>
+                      <stackLabel enable="0" alignmentType="0" minCharNumPerLine="3" maxCharNumPerLine="24" maxLineSize="3">
+                        <splitItems>
+                          <splitItem value=" " visible="0" forceSplit="0" splitAfter="1">
+                          </splitItem>
+                          <splitItem value="," visible="1" forceSplit="0" splitAfter="1">
+                          </splitItem>
+                        </splitItems>
+                      </stackLabel>
+                    </fittingStrategys>
+                    <regLabelInfo limitMinArea="0" minArea="10.0" labelPlaceMethod="0" insidePolygon="1" tryVertical="0">
+                      <regLabelOutSidePriority aboveCenter="2" aboveLeft="0" aboveRight="2" belowCenter="3" belowLeft="0" belowRight="3" centerLeft="0" centerRight="1">
+                      </regLabelOutSidePriority>
+                    </regLabelInfo>
+                    <linLabelInfo labelSpreadType="0" labelRepeatType="1" repeatLength="10.0" charSpace="1.5">
+                      <linLabelPosition orientationType="0" offset="0.0" decorationType="0" positionAlongLine="0" onLine="1" aboveLine="0" belowLine="0" leftLine="0" rightLine="0">
+                      </linLabelPosition>
+                      <placePriorities onLine="3" aboveOrLeftLine="3" belowOrRightLine="3">
+                      </placePriorities>
+                    </linLabelInfo>
+                    <pntLabelInfo labelPlaceMethod="0" offsetPointType="1" coordinateType="1" rotationField="" perpendicularToAngle="0">
+                      <specifiedAnglesInfo specifiedAnglesNum="0" specifiedAngles="">
+                      </specifiedAnglesInfo>
+                      <placePriorities aboveCenter="2" aboveLeft="0" aboveRight="2" belowCenter="3" belowLeft="0" belowRight="3" centerLeft="0" centerRight="1">
+                      </placePriorities>
+                    </pntLabelInfo>
+                  </basicOverposterInfo>
+                  <labelContent labelType="0">
+                    <simpleLabel labelExpression="" newLine="0" maxLengthPreLine="6" resizeBasedOnScale="0">
+                      <labelSymbol class="CGAnnStrInfoSymbol" GUID="00000000-0000-0000-0000-000000000000" height="4.0" width="4.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+                      </labelSymbol>
+                    </simpleLabel>
+                  </labelContent>
+                </labelEngineLayerInfo>
+              </labelItem>
+            </labelItemGroup>
+          </render>
+        </Renders>
+        <VirtualFields>
+        </VirtualFields>
+        <minScale>4.207350833131616e-92</minScale>
+        <maxScale>1e100</maxScale>
+        <ScaleRange MinScale="1e100" MaxScale="0.0">
+        </ScaleRange>
+        <Extend>
+          <Expand>true</Expand>
+        </Extend>
+      </subnode>
+      <subnode name="STREET" type="SFeatureLayer" geometryType="3" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
+        <url>GDBP://MapGisLocal/wh_facility/ds/STREET/sfcls/STREET</url>
+        <layerWeight>0</layerWeight>
+        <IsSnaped>1</IsSnaped>
+        <state>VISIBLE</state>
+        <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </directIndex>
+        <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </reverseIndex>
+        <conditions>
+        </conditions>
+        <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
+          <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+            </annInfo>
+          </geoInfo>
+          <labelExpression>
+          </labelExpression>
+          <geomType>pnt</geomType>
+          <priority>1</priority>
+          <isLabelClientOutside>false</isLabelClientOutside>
+          <backType>1</backType>
+          <highlightClr>0</highlightClr>
+          <backGeoInfo>
+            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="9;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </linInfo>
+          </backGeoInfo>
+          <numericPrecision>0</numericPrecision>
+          <isNewLineToLabel>false</isNewLineToLabel>
+          <maxLengthPreLine>0</maxLengthPreLine>
+          <isLabelUnPlaced>false</isLabelUnPlaced>
+          <reducedSizeForContinulLabel>0</reducedSizeForContinulLabel>
+          <isHighlightLabelUnPlaced>false</isHighlightLabelUnPlaced>
+          <labelFormat>
+          </labelFormat>
+          <placeInfo type="1" offset="0.0" eightLocationPrioritys="1;2;3;4;5;6;7;8" anyLocationCount="1" anyLocationPrioritys="0.0" isAvoidPointSymbol="0" isFollowPointSymbolBorder="0">
+          </placeInfo>
+        </label>
+        <IsUseSuperLink>0</IsUseSuperLink>
+        <SuperLinkFieldName>无</SuperLinkFieldName>
+        <SuperLinkmode>1</SuperLinkmode>
+        <LayerControl LayerNo="0">
+          <LayerState>
+          </LayerState>
+        </LayerControl>
+        <systemLibGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</systemLibGUID>
+        <vectorRenderInfoNew>
+          <IsShowSymbol>1</IsShowSymbol>
+          <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
+          <ShowSymbolMaxScale>0.0</ShowSymbolMaxScale>
+          <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
+          <FollowZoomMinScale>1e100</FollowZoomMinScale>
+          <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
+          <sTransParency>0</sTransParency>
+          <IsShowCoord>0</IsShowCoord>
+          <ShowCoordColor>1</ShowCoordColor>
+          <ShowCoordSize>4.0</ShowCoordSize>
+          <IsDispRect>0</IsDispRect>
+          <MinVisibleSize>0.0</MinVisibleSize>
+          <IsShowLinDire>0</IsShowLinDire>
+          <direLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;2;2" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+          </direLinInfo>
+          <IsReduceLin>0</IsReduceLin>
+          <ReduceLinStep>5.0</ReduceLinStep>
+          <SameAs6xLine>0</SameAs6xLine>
+          <NotDraw0Lin>0</NotDraw0Lin>
+          <IsFillReg>0</IsFillReg>
+          <FillRegMinScale>1e100</FillRegMinScale>
+          <FillRegMaxScale>0.0</FillRegMaxScale>
+          <IsShowRegBorder>0</IsShowRegBorder>
+          <ShowRegBorderMinScale>1e100</ShowRegBorderMinScale>
+          <ShowRegBorderMaxScale>0.0</ShowRegBorderMaxScale>
+          <RegBorderLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+          </RegBorderLinInfo>
+          <IsRegBorderShowSymbol>0</IsRegBorderShowSymbol>
+          <RegBorderShowSymbolMinScale>1e100</RegBorderShowSymbolMinScale>
+          <RegBorderShowSymbolMaxScale>0.0</RegBorderShowSymbolMaxScale>
+          <IsRegBorderFollowZoom>0</IsRegBorderFollowZoom>
+          <RegBorderFollowZoomMinScale>1e100</RegBorderFollowZoomMinScale>
+          <RegBorderFollowZoomMaxScale>0.0</RegBorderFollowZoomMaxScale>
+          <PixSizeofFilterSmallFeature>1</PixSizeofFilterSmallFeature>
+          <SameAs6xFont>0</SameAs6xFont>
+        </vectorRenderInfoNew>
+        <featureSortInfo field="" asce="1">
+        </featureSortInfo>
+        <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+        </Renders>
+        <VirtualFields>
+        </VirtualFields>
+        <minScale>4.207350833131616e-92</minScale>
+        <maxScale>1e100</maxScale>
+        <ScaleRange MinScale="1e100" MaxScale="0.0">
+        </ScaleRange>
+        <Extend>
+        </Extend>
+      </subnode>
+      <subnode name="RESIDENTIAL" type="SFeatureLayer" geometryType="1" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
+        <url>GDBP://MapGisLocal/wh_facility/ds/RESIDENTIAL/sfcls/RESIDENTIAL</url>
+        <layerWeight>0</layerWeight>
+        <IsSnaped>1</IsSnaped>
+        <state>VISIBLE</state>
+        <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </directIndex>
+        <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </reverseIndex>
+        <conditions>0000000000000000000000000000000000</conditions>
+        <subnode name="统一专题图" type="SimpleTheme" class="CreateGTheme@GisCartoPrj.dll">
+          <state>VISIBLE</state>
+          <geomInfoType>1</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <pntInfo lib="0" id="1" height="0.5" width="0.5" angle="0.0" outpenw="0.10000000149011612;0.05000000074505806;0.05000000074505806" outclr="1471;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+            </pntInfo>
+          </geoInfo>
+        </subnode>
+        <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
+          <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+            </annInfo>
+          </geoInfo>
+          <labelExpression>
+          </labelExpression>
+          <geomType>pnt</geomType>
+          <priority>1</priority>
+          <isLabelClientOutside>false</isLabelClientOutside>
+          <backType>1</backType>
+          <highlightClr>0</highlightClr>
+          <backGeoInfo>
+            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="9;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </linInfo>
+          </backGeoInfo>
+          <numericPrecision>0</numericPrecision>
+          <isNewLineToLabel>false</isNewLineToLabel>
+          <maxLengthPreLine>0</maxLengthPreLine>
+          <isLabelUnPlaced>false</isLabelUnPlaced>
+          <reducedSizeForContinulLabel>0</reducedSizeForContinulLabel>
+          <isHighlightLabelUnPlaced>false</isHighlightLabelUnPlaced>
+          <labelFormat>
+          </labelFormat>
+          <placeInfo type="1" offset="0.0" eightLocationPrioritys="1;2;3;4;5;6;7;8" anyLocationCount="1" anyLocationPrioritys="0.0" isAvoidPointSymbol="0" isFollowPointSymbolBorder="0">
+          </placeInfo>
+        </label>
+        <IsUseSuperLink>0</IsUseSuperLink>
+        <SuperLinkFieldName>
+        </SuperLinkFieldName>
+        <SuperLinkmode>1</SuperLinkmode>
+        <LayerControl LayerNo="0">
+          <LayerState>
+          </LayerState>
+        </LayerControl>
+        <systemLibGUID>00000000-0000-0000-0000-000000000000</systemLibGUID>
+        <vectorRenderInfoNew>
+          <IsShowSymbol>1</IsShowSymbol>
+          <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
+          <ShowSymbolMaxScale>0.0</ShowSymbolMaxScale>
+          <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
+          <FollowZoomMinScale>1e100</FollowZoomMinScale>
+          <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
+          <sTransParency>0</sTransParency>
+          <IsShowCoord>0</IsShowCoord>
+          <ShowCoordColor>1</ShowCoordColor>
+          <ShowCoordSize>4.0</ShowCoordSize>
+          <IsDispRect>0</IsDispRect>
+          <MinVisibleSize>0.0</MinVisibleSize>
+          <IsShowLinDire>0</IsShowLinDire>
+          <direLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;2;2" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+          </direLinInfo>
+          <IsReduceLin>0</IsReduceLin>
+          <ReduceLinStep>5.0</ReduceLinStep>
+          <SameAs6xLine>0</SameAs6xLine>
+          <NotDraw0Lin>0</NotDraw0Lin>
+          <IsFillReg>1</IsFillReg>
+          <FillRegMinScale>1e100</FillRegMinScale>
+          <FillRegMaxScale>0.0</FillRegMaxScale>
+          <IsShowRegBorder>0</IsShowRegBorder>
+          <ShowRegBorderMinScale>1e100</ShowRegBorderMinScale>
+          <ShowRegBorderMaxScale>0.0</ShowRegBorderMaxScale>
+          <RegBorderLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+          </RegBorderLinInfo>
+          <IsRegBorderShowSymbol>0</IsRegBorderShowSymbol>
+          <RegBorderShowSymbolMinScale>1e100</RegBorderShowSymbolMinScale>
+          <RegBorderShowSymbolMaxScale>0.0</RegBorderShowSymbolMaxScale>
+          <IsRegBorderFollowZoom>0</IsRegBorderFollowZoom>
+          <RegBorderFollowZoomMinScale>1e100</RegBorderFollowZoomMinScale>
+          <RegBorderFollowZoomMaxScale>0.0</RegBorderFollowZoomMaxScale>
+          <PixSizeofFilterSmallFeature>1</PixSizeofFilterSmallFeature>
+          <SameAs6xFont>0</SameAs6xFont>
+        </vectorRenderInfoNew>
+        <featureSortInfo field="" asce="1">
+        </featureSortInfo>
+        <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+          <render>
+            <RenderType>0</RenderType>
+          </render>
+        </Renders>
+        <VirtualFields>
+        </VirtualFields>
+        <minScale>0.0</minScale>
+        <maxScale>0.0</maxScale>
+        <ScaleRange MinScale="0.0" MaxScale="0.0">
+        </ScaleRange>
+        <Extend>
+          <Expand>false</Expand>
+        </Extend>
+      </subnode>
+      <subnode name="ROAD" type="SFeatureLayer" geometryType="2" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
+        <url>GDBP://MapGisLocal/wh_facility/ds/ROAD/sfcls/ROAD</url>
+        <layerWeight>0</layerWeight>
+        <IsSnaped>1</IsSnaped>
+        <state>VISIBLE</state>
+        <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </directIndex>
+        <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
+        </reverseIndex>
+        <conditions>0000000000000000000000000000000000</conditions>
+        <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
+          <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
+          <minScale>0.0</minScale>
+          <maxScale>0.0</maxScale>
+          <ScaleRange MinScale="0.0" MaxScale="0.0">
+          </ScaleRange>
+          <geoInfo>
+            <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+            </annInfo>
+          </geoInfo>
+          <labelExpression>
+          </labelExpression>
+          <geomType>pnt</geomType>
+          <priority>1</priority>
+          <isLabelClientOutside>false</isLabelClientOutside>
+          <backType>1</backType>
+          <highlightClr>0</highlightClr>
+          <backGeoInfo>
+            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="9;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </linInfo>
+          </backGeoInfo>
+          <numericPrecision>0</numericPrecision>
+          <isNewLineToLabel>false</isNewLineToLabel>
+          <maxLengthPreLine>0</maxLengthPreLine>
+          <isLabelUnPlaced>false</isLabelUnPlaced>
+          <reducedSizeForContinulLabel>0</reducedSizeForContinulLabel>
+          <isHighlightLabelUnPlaced>false</isHighlightLabelUnPlaced>
+          <labelFormat>
+          </labelFormat>
+          <placeInfo type="1" offset="0.0" eightLocationPrioritys="1;2;3;4;5;6;7;8" anyLocationCount="1" anyLocationPrioritys="0.0" isAvoidPointSymbol="0" isFollowPointSymbolBorder="0">
+          </placeInfo>
+        </label>
+        <IsUseSuperLink>0</IsUseSuperLink>
+        <SuperLinkFieldName>
+        </SuperLinkFieldName>
+        <SuperLinkmode>1</SuperLinkmode>
+        <LayerControl LayerNo="0">
+          <LayerState>
+          </LayerState>
+        </LayerControl>
+        <systemLibGUID>00000000-0000-0000-0000-000000000000</systemLibGUID>
+        <vectorRenderInfoNew>
+          <IsShowSymbol>1</IsShowSymbol>
+          <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
+          <ShowSymbolMaxScale>0.0</ShowSymbolMaxScale>
+          <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
+          <FollowZoomMinScale>1e100</FollowZoomMinScale>
+          <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
+          <sTransParency>0</sTransParency>
+          <IsShowCoord>0</IsShowCoord>
+          <ShowCoordColor>1</ShowCoordColor>
+          <ShowCoordSize>4.0</ShowCoordSize>
+          <IsDispRect>0</IsDispRect>
+          <MinVisibleSize>0.0</MinVisibleSize>
+          <IsShowLinDire>0</IsShowLinDire>
+          <direLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;2;2" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+          </direLinInfo>
+          <IsReduceLin>0</IsReduceLin>
+          <ReduceLinStep>5.0</ReduceLinStep>
+          <SameAs6xLine>0</SameAs6xLine>
+          <NotDraw0Lin>0</NotDraw0Lin>
+          <IsFillReg>1</IsFillReg>
+          <FillRegMinScale>1e100</FillRegMinScale>
+          <FillRegMaxScale>0.0</FillRegMaxScale>
+          <IsShowRegBorder>0</IsShowRegBorder>
+          <ShowRegBorderMinScale>1e100</ShowRegBorderMinScale>
+          <ShowRegBorderMaxScale>0.0</ShowRegBorderMaxScale>
+          <RegBorderLinInfo lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="2;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+          </RegBorderLinInfo>
+          <IsRegBorderShowSymbol>0</IsRegBorderShowSymbol>
+          <RegBorderShowSymbolMinScale>1e100</RegBorderShowSymbolMinScale>
+          <RegBorderShowSymbolMaxScale>0.0</RegBorderShowSymbolMaxScale>
+          <IsRegBorderFollowZoom>0</IsRegBorderFollowZoom>
+          <RegBorderFollowZoomMinScale>1e100</RegBorderFollowZoomMinScale>
+          <RegBorderFollowZoomMaxScale>0.0</RegBorderFollowZoomMaxScale>
+          <PixSizeofFilterSmallFeature>1</PixSizeofFilterSmallFeature>
+          <SameAs6xFont>0</SameAs6xFont>
+        </vectorRenderInfoNew>
+        <featureSortInfo field="" asce="1">
+        </featureSortInfo>
+        <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+        </Renders>
+        <VirtualFields>
+        </VirtualFields>
+        <minScale>0.0</minScale>
+        <maxScale>0.0</maxScale>
+        <ScaleRange MinScale="0.0" MaxScale="0.0">
+        </ScaleRange>
+        <Extend>
+        </Extend>
+      </subnode>
+      <bookMarks>
+      </bookMarks>
+      <Extend>
+        <InitOpenView>true</InitOpenView>
+        <Expand>true</Expand>
+      </Extend>
+      <GraphicsData dispos="0">
+        <Graphics_ann FollowZoom="1">
+        </Graphics_ann>
+        <Graphics_Pnt FollowZoom="1">
+        </Graphics_Pnt>
+        <Graphics_Lin FollowZoom="1">
+        </Graphics_Lin>
+        <Graphics_Reg FollowZoom="1">R0RCRFVNUEYBAAEAAAAAAAMAAAAkAAAAMDhmODE4ZTQtZTRiNi00ZDEyLWE2ZjEtOTM0YTRhNTdjZWRiDAAAAAQAAAAAAAAAQAAAAAAAAAA4AAAAAAAAAP////////////////////////////////////////////////////8AAAAAAAAAAEoAAAAAAAAAiAEAAAAAAAACAAAAAAAAAP//////////AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAACqmZmZmZm5f6qZmZmZmbl/qpmZmZmZuf+qmZmZmZm5/wAAAAAAAWUAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAA/////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABQAAAAAAAAAAAKBAAACgQAAAAAADAAAAAACAPwFKAAAAAAAAAHJE6gcLFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AUAAAEAAAAAAAAA/////4ABAAAAAAAAwAUAAAAAAAAAAAAAAAAAAHBEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAEAAAAAAAAAAAIAAAAAAAAA//////////8=</Graphics_Reg>
+        <state>VISIBLE</state>
+        <systemLibraryGUID>00000000-0000-0000-0000-000000000000</systemLibraryGUID>
+      </GraphicsData>
+    </subnode>
+    <layout class="CreateLayOut@GisCartoPrj.dll">
+      <name>Layout</name>
+      <height>600.000000</height>
+      <width>594.000000</width>
+      <refrenceline visible="0">
+        <hlines>
+        </hlines>
+        <vlines>
+        </vlines>
+      </refrenceline>
+      <elements>
+        <element visible="1" readOnly="0" bFixAspect="0" bCanScale="1" bCanRotate="0" angle="0.0" sysLibGuid="00000000-0000-0000-0000-000000000000" name="MapElement" desc="" DynamicGridVisible="0" type="MapElement" class="CreateGElement@GisCartoPrj.dll" MapName="wh_facility" MapGuid="b5252cad-2281-46b6-992a-8c7be0098b34" MapElementGuid="c3e18022-7bd1-445d-b712-772b241851c8">
+          <MapElementCustiomViewExtent>
+            <xmin>114.1208608</xmin>
+            <ymin>30.809864337431699</ymin>
+            <xmax>114.24234600760699</xmax>
+            <ymax>30.818391661784508</ymax>
+          </MapElementCustiomViewExtent>
+          <Extend>
+          </Extend>
+          <border visible="0" xGrap="0.0" yGrap="0.0" BorderType="0">
+            <SimpleBorderInfo cornerRounding="0" FillType="0" lib="0" id="0" ovprnt="0" outpenw="0.0;0.0;0.0" outclr="0;0;0" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="0.0" yscale="0.0">
+            </SimpleBorderInfo>
+            <LaceBorderInfo>
+              <corners>
+                <cornerLB dx="0.0" dy="0.0" lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLB>
+                <cornerRB dx="0.0" dy="0.0" lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRB>
+                <cornerRT dx="0.0" dy="0.0" lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRT>
+                <cornerLT dx="0.0" dy="0.0" lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLT>
+              </corners>
+              <borders adjustmode="0">
+                <borderleft gap="0.0">
+                </borderleft>
+                <borderright gap="0.0">
+                </borderright>
+                <bordertop gap="0.0">
+                </bordertop>
+                <borderbottom gap="0.0">
+                </borderbottom>
+                <borderclose gap="0.0">
+                </borderclose>
+              </borders>
+              <lines>
+              </lines>
+              <draworder>0</draworder>
+            </LaceBorderInfo>
+          </border>
+          <background visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </background>
+          <shadow visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </shadow>
+          <LogicRect xmin="-343.7602582496414" ymin="521.6130559540886" xmax="-180.45602582496407" ymax="533.0757532281202">
+          </LogicRect>
+          <viewRect xmin="114.1208608" ymin="30.809864337431699" xmax="114.24234600760699" ymax="30.818391661784508">
+          </viewRect>
+        </element>
+        <element visible="1" readOnly="0" bFixAspect="0" bCanScale="1" bCanRotate="0" angle="0.0" sysLibGuid="00000000-0000-0000-0000-000000000000" name="MapElement" desc="" DynamicGridVisible="0" type="MapElement" class="CreateGElement@GisCartoPrj.dll" MapName="wh_facility" MapGuid="b5252cad-2281-46b6-992a-8c7be0098b34" MapElementGuid="d7255569-41d2-44ba-8df9-fae999fb44dc">
+          <MapElementCustiomViewExtent>
+            <xmin>114.1208608</xmin>
+            <ymin>30.334295000000006</ymin>
+            <xmax>114.56274900000001</xmax>
+            <ymax>30.676852000000016</ymax>
+          </MapElementCustiomViewExtent>
+          <Extend>
+          </Extend>
+          <border visible="0" xGrap="0.0" yGrap="0.0" BorderType="0">
+            <SimpleBorderInfo cornerRounding="0" FillType="0" lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.0;0.0" outclr="0;0;0" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </SimpleBorderInfo>
+            <LaceBorderInfo>
+              <corners>
+                <cornerLB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLB>
+                <cornerRB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRB>
+                <cornerRT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRT>
+                <cornerLT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLT>
+              </corners>
+              <borders adjustmode="0">
+                <borderleft gap="0.0">
+                </borderleft>
+                <borderright gap="0.0">
+                </borderright>
+                <bordertop gap="0.0">
+                </bordertop>
+                <borderbottom gap="0.0">
+                </borderbottom>
+                <borderclose gap="0.0">
+                </borderclose>
+              </borders>
+              <lines>
+              </lines>
+              <draworder>0</draworder>
+            </LaceBorderInfo>
+          </border>
+          <background visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </background>
+          <shadow visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </shadow>
+          <LogicRect xmin="17.623758330508907" ymin="14.817290347945317" xmax="564.1878629033505" ymax="438.52029932207275">
+          </LogicRect>
+          <viewRect xmin="114.1208608" ymin="30.334295000000006" xmax="114.56274900000001" ymax="30.676852000000016">
+          </viewRect>
+        </element>
+        <element type="TextElement" class="CreateGElement@GisCartoPrj.dll" visible="1" readOnly="0" bFixAspect="1" bCanScale="1" bCanRotate="1" angle="0.0" sysLibGuid="9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b" name="TextElement" desc="">
+          <DecorationInfo Origin.x="2.066212338593715" Origin.y="395.81004304160697" angle="0.0" name="TextElement" alias="" desc="" version="2.0">
+            <content>
+              <text>行政区划：阿里云 DataV.GeoAtlas / 民政部行政区划代码
+设施 POI：高德开放平台 /v3/place/polygon，25,384 条原始 POI
+路网：OpenStreetMap / Overpass API，14,377 条道路段
+公交/地铁：武汉市公共交通与轨道交通开放数据集
+人口：WorldPop 2020，100m
+土地覆被：CLCD 2024，30m，武汉大学黄昕团队
+行政区划参考：AreaCity-JsSpider-StatsGov
+ OpenStreetMap contributors, ODbL</text>
+            </content>
+            <param>
+              <info height="13.496570587158204" width="13.496570587158204" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="1" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+              </info>
+              <space>0.0</space>
+              <align>0</align>
+            </param>
+          </DecorationInfo>
+          <Extend>
+          </Extend>
+        </element>
+        <element type="TextElement" class="CreateGElement@GisCartoPrj.dll" visible="1" readOnly="0" bFixAspect="1" bCanScale="1" bCanRotate="1" angle="0.0" sysLibGuid="00000000-0000-0000-0000-000000000000" name="TextElement" desc="">
+          <DecorationInfo Origin.x="836.4556492109036" Origin.y="532.3216284074604" angle="0.0" name="TextElement" alias="" desc="" version="2.0">
+            <content>
+              <text>
+              </text>
+            </content>
+            <param>
+              <info height="30.0" width="30.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="1" ovprnt="0" fillflg="0" backexp="0.0" backclr="-1" offsetx="0.0" offsety="0.0">
+              </info>
+              <space>0.0</space>
+              <align>0</align>
+            </param>
+          </DecorationInfo>
+          <Extend>
+          </Extend>
+        </element>
+        <element type="ScaleBarElement" class="CreateGElement@GisCartoPrj.dll" barAdjustMode="1" scaleChangeMode="0" visible="1" readOnly="0" bFixAspect="0" bCanScale="1" bCanRotate="0" angle="0.0" sysLibGuid="9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b" name="ScaleBarElement" desc="" MapName="wh_facility" MapGuid="b5252cad-2281-46b6-992a-8c7be0098b34" MapElementGuid="00000000-0000-0000-0000-000000000000">
+          <DecorationInfo Origin.x="12.309899569583934" Origin.y="518.4361549497847" angle="0.0" name="ScaleBarElement" alias="" desc="" version="2.0">
+            <content>
+              <scale>82812</scale>
+            </content>
+            <param showbarex="1">
+              <info>
+                <type>0</type>
+                <layout>0</layout>
+                <unit>10</unit>
+                <unitpos>5</unitpos>
+                <divs>5</divs>
+                <divwid>5.0</divwid>
+                <divhei>6.0</divhei>
+                <divsubs>2</divsubs>
+                <divsubtype>1</divsubtype>
+                <grad>1</grad>
+                <gradsub>1</gradsub>
+                <gradlen>2.0</gradlen>
+                <gradsublen>1.0</gradsublen>
+                <labelsub>0</labelsub>
+                <unittype>0</unittype>
+                <digit>0</digit>
+                <digitsub>0</digitsub>
+                <gaplabel>0.5</gaplabel>
+                <gapunit>0.20000000298023225</gapunit>
+                <linewidth>0.05000000074505806</linewidth>
+                <linecolor>1</linecolor>
+                <bottomlinewidthrate>0</bottomlinewidthrate>
+                <topfloorper>0</topfloorper>
+                <bottomfloorper>0</bottomfloorper>
+                <groupunitandlabel>0</groupunitandlabel>
+                <bonlybodywidth>0</bonlybodywidth>
+                <textinfo height="10.0" width="10.0" space="0.0" fontang="0.0" strang="0.0" ifnt="1" chnt="1" ifnx="0" hvpl="0" iclr="1" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
+                </textinfo>
+              </info>
+            </param>
+          </DecorationInfo>
+          <Extend>
+          </Extend>
+          <border visible="0" xGrap="0.0" yGrap="0.0" BorderType="0">
+            <SimpleBorderInfo cornerRounding="0" FillType="0" lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.0;0.0" outclr="0;0;0" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </SimpleBorderInfo>
+            <LaceBorderInfo>
+              <corners>
+                <cornerLB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLB>
+                <cornerRB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRB>
+                <cornerRT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRT>
+                <cornerLT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLT>
+              </corners>
+              <borders adjustmode="0">
+                <borderleft gap="0.0">
+                </borderleft>
+                <borderright gap="0.0">
+                </borderright>
+                <bordertop gap="0.0">
+                </bordertop>
+                <borderbottom gap="0.0">
+                </borderbottom>
+                <borderclose gap="0.0">
+                </borderclose>
+              </borders>
+              <lines>
+              </lines>
+              <draworder>0</draworder>
+            </LaceBorderInfo>
+          </border>
+          <background visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </background>
+          <shadow visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </shadow>
+        </element>
+        <element type="LegendElement" class="CreateGElement@GisCartoPrj.dll" visible="1" readOnly="0" bFixAspect="0" bCanScale="1" bCanRotate="0" angle="0.0" sysLibGuid="00000000-0000-0000-0000-000000000000" name="Element" desc="" MapName="wh_facility" MapGuid="b5252cad-2281-46b6-992a-8c7be0098b34" MapElementGuid="00000000-0000-0000-0000-000000000000">
+          <Extend>
+          </Extend>
+          <border visible="0" xGrap="0.0" yGrap="0.0" BorderType="0">
+            <SimpleBorderInfo cornerRounding="0" FillType="0" lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.0;0.0" outclr="0;0;0" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
+            </SimpleBorderInfo>
+            <LaceBorderInfo>
+              <corners>
+                <cornerLB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLB>
+                <cornerRB dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRB>
+                <cornerRT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerRT>
+                <cornerLT dx="0.0" dy="0.0" lib="0" id="0" height="5.0" width="5.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                </cornerLT>
+              </corners>
+              <borders adjustmode="0">
+                <borderleft gap="0.0">
+                </borderleft>
+                <borderright gap="0.0">
+                </borderright>
+                <bordertop gap="0.0">
+                </bordertop>
+                <borderbottom gap="0.0">
+                </borderbottom>
+                <borderclose gap="0.0">
+                </borderclose>
+              </borders>
+              <lines>
+              </lines>
+              <draworder>0</draworder>
+            </LaceBorderInfo>
+          </border>
+          <background visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </background>
+          <shadow visible="0" cornerRounding="0" xGrap="0.0" yGrap="0.0">
+            <info lib="0" id="0" ovprnt="0" fillmode="0" fillclr="0" endclr="0" pathei="0.0" patwid="0.0" ang="0.0" patclr="0" outpenw="0.0" fullpatflg="0">
+            </info>
+          </shadow>
+          <LegendAtrriBute>
+            <LegendInfo>
+              <LegTitleInfo>
+                <ShowTitle>1</ShowTitle>
+                <TitleAlign>2</TitleAlign>
+                <TitleText>图例</TitleText>
+                <Reserved>
+                </Reserved>
+                <TextInfo>
+                  <Angle>0.0</Angle>
+                  <Chnt>0</Chnt>
+                  <Color>0</Color>
+                  <Height>32.35804748535156</Height>
+                  <Width>32.35804748535156</Width>
+                  <Ifnt>0</Ifnt>
+                  <Ifnx>0</Ifnx>
+                  <Space>0.0</Space>
+                </TextInfo>
+              </LegTitleInfo>
+              <CommGapInfo>
+                <GapFirst>16.179024168953889</GapFirst>
+                <GapItems>16.179024168953889</GapItems>
+                <GapLayertitleItem>16.179024168953889</GapLayertitleItem>
+                <GapSecond>16.179024168953889</GapSecond>
+                <PatchHeight>16.179024168953889</PatchHeight>
+                <PatchWidth>32.358048337907778</PatchWidth>
+                <Reserved>
+                </Reserved>
+              </CommGapInfo>
+              <GapColumns>16.179024168953889</GapColumns>
+              <GapGroups>32.358048337907778</GapGroups>
+              <GapTitleLayertitle>24.26853625343083</GapTitleLayertitle>
+              <GapToFrame>8.089512084476944</GapToFrame>
+              <Column>1</Column>
+              <CreateRule>2</CreateRule>
+              <Reserved>
+              </Reserved>
+              <PatchCommInfo>
+                <ChangePatchHW>0</ChangePatchHW>
+                <ShowPatchFrame>0</ShowPatchFrame>
+                <ShowBackClr>0</ShowBackClr>
+                <PatchHeight>10.0</PatchHeight>
+                <PatchWidth>32.358048337907778</PatchWidth>
+                <BackClr>6</BackClr>
+                <FrameClr>0</FrameClr>
+                <Reserved>
+                </Reserved>
+              </PatchCommInfo>
+            </LegendInfo>
+            <DefaultInfo>
+              <LegTitleInfo>
+                <ShowTitle>1</ShowTitle>
+                <TitleAlign>2</TitleAlign>
+                <TitleText>图例</TitleText>
+                <Reserved>
+                </Reserved>
+                <TextInfo>
+                  <Angle>0.0</Angle>
+                  <Chnt>0</Chnt>
+                  <Color>0</Color>
+                  <Height>20.0</Height>
+                  <Width>20.0</Width>
+                  <Ifnt>0</Ifnt>
+                  <Ifnx>0</Ifnx>
+                  <Space>0.0</Space>
+                </TextInfo>
+              </LegTitleInfo>
+              <CommGapInfo>
+                <GapFirst>10.0</GapFirst>
+                <GapItems>10.0</GapItems>
+                <GapLayertitleItem>10.0</GapLayertitleItem>
+                <GapSecond>10.0</GapSecond>
+                <PatchHeight>10.0</PatchHeight>
+                <PatchWidth>20.0</PatchWidth>
+                <Reserved>
+                </Reserved>
+              </CommGapInfo>
+              <GapColumns>10.0</GapColumns>
+              <GapGroups>20.0</GapGroups>
+              <GapTitleLayertitle>15.0</GapTitleLayertitle>
+              <GapToFrame>5.0</GapToFrame>
+              <Column>1</Column>
+              <CreateRule>2</CreateRule>
+              <Reserved>
+              </Reserved>
+              <PatchCommInfo>
+                <ChangePatchHW>0</ChangePatchHW>
+                <ShowPatchFrame>0</ShowPatchFrame>
+                <ShowBackClr>0</ShowBackClr>
+                <PatchHeight>10.0</PatchHeight>
+                <PatchWidth>20.0</PatchWidth>
+                <BackClr>6</BackClr>
+                <FrameClr>0</FrameClr>
+                <Reserved>
+                </Reserved>
+              </PatchCommInfo>
+            </DefaultInfo>
+            <Fixed>0</Fixed>
+            <LayerItemNum>1</LayerItemNum>
+            <GroupItemNum>0</GroupItemNum>
+            <Rect>
+              <xmin>-8.089512084476944</xmin>
+              <ymin>-8.089512084476944</ymin>
+              <xmax>182.82297108029605</xmax>
+              <ymax>239.4495566976737</ymax>
+            </Rect>
+            <Draged>0</Draged>
+            <FirstDrawed>1</FirstDrawed>
+            <UnGrouped>0</UnGrouped>
+            <Reserved>
+            </Reserved>
+          </LegendAtrriBute>
+          <LegendTitle>
+            <LegendTitleItem>
+              <BaseItem>
+                <ItemType>1</ItemType>
+                <ItemState>0</ItemState>
+                <Rect>
+                  <xmin>0.0</xmin>
+                  <ymin>0.0</ymin>
+                  <xmax>64.71609497070313</xmax>
+                  <ymax>32.35804748535156</ymax>
+                </Rect>
+                <Pos>
+                  <X>55.00868201255798</X>
+                  <Y>199.0019971278452</Y>
+                </Pos>
+                <Show>1</Show>
+                <FilledClr>9</FilledClr>
+                <IsFilledBKClr>0</IsFilledBKClr>
+                <FrameClr>1</FrameClr>
+                <IsDispFrame>0</IsDispFrame>
+                <ItemID>1</ItemID>
+              </BaseItem>
+              <TitleInfo>
+                <ShowTitle>1</ShowTitle>
+                <TitleAlign>2</TitleAlign>
+                <TitleText>图例</TitleText>
+                <Reserved>
+                </Reserved>
+                <TextInfo>
+                  <Angle>0.0</Angle>
+                  <Chnt>0</Chnt>
+                  <Color>0</Color>
+                  <Height>32.35804748535156</Height>
+                  <Width>32.35804748535156</Width>
+                  <Ifnt>0</Ifnt>
+                  <Ifnx>0</Ifnx>
+                  <Space>0.0</Space>
+                </TextInfo>
+              </TitleInfo>
+            </LegendTitleItem>
+          </LegendTitle>
+          <LegendLayers>
+            <LegendLayer_1>
+              <LegendLayer>
+                <LegendLayerInfo>
+                  <TitleInfo>
+                    <ShowTitle>1</ShowTitle>
+                    <TitleAlign>2</TitleAlign>
+                    <TitleText>FACILITY-单值专题图(CAT_L1)</TitleText>
+                    <Reserved>
+                    </Reserved>
+                    <TextInfo>
+                      <Angle>0.0</Angle>
+                      <Chnt>0</Chnt>
+                      <Color>0</Color>
+                      <Height>12.943219184875489</Height>
+                      <Width>12.943219184875489</Width>
+                      <Ifnt>0</Ifnt>
+                      <Ifnx>0</Ifnx>
+                      <Space>0.0</Space>
+                    </TextInfo>
+                  </TitleInfo>
+                  <ItemShowInfo>
+                    <ShowLabel>1</ShowLabel>
+                    <ShowDesp>0</ShowDesp>
+                    <Reserved>
+                    </Reserved>
+                  </ItemShowInfo>
+                  <NewColumn>0</NewColumn>
+                  <TextInfo>
+                    <Angle>0.0</Angle>
+                    <Chnt>0</Chnt>
+                    <Color>0</Color>
+                    <Height>8.08951187133789</Height>
+                    <Width>8.08951187133789</Width>
+                    <Ifnt>0</Ifnt>
+                    <Ifnx>0</Ifnx>
+                    <Space>0.0</Space>
+                  </TextInfo>
+                  <TextInfo>
+                    <Angle>0.0</Angle>
+                    <Chnt>0</Chnt>
+                    <Color>0</Color>
+                    <Height>8.08951187133789</Height>
+                    <Width>8.08951187133789</Width>
+                    <Ifnt>0</Ifnt>
+                    <Ifnx>0</Ifnx>
+                    <Space>0.0</Space>
+                  </TextInfo>
+                  <Column>1</Column>
+                  <LegendItemPatchInfo>
+                    <PatchCommInfo>
+                      <ChangePatchHW>0</ChangePatchHW>
+                      <ShowPatchFrame>0</ShowPatchFrame>
+                      <ShowBackClr>0</ShowBackClr>
+                      <PatchHeight>16.179024168953889</PatchHeight>
+                      <PatchWidth>32.358048337907778</PatchWidth>
+                      <BackClr>6</BackClr>
+                      <FrameClr>0</FrameClr>
+                      <Reserved>
+                      </Reserved>
+                    </PatchCommInfo>
+                    <SymbolType>1</SymbolType>
+                    <PntInfo lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                    </PntInfo>
+                    <Reserved>
+                    </Reserved>
+                  </LegendItemPatchInfo>
+                  <ArrType>0</ArrType>
+                  <LegendLayerGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</LegendLayerGUID>
+                  <ItemShowInfo>
+                    <DispFillClr>0</DispFillClr>
+                    <DispFrame>0</DispFrame>
+                    <FillClr>9</FillClr>
+                    <FrameClr>0</FrameClr>
+                    <Reserved>
+                    </Reserved>
+                  </ItemShowInfo>
+                  <CommGapInfo>
+                    <GapFirst>16.179024168953889</GapFirst>
+                    <GapItems>16.179024168953889</GapItems>
+                    <GapLayertitleItem>16.179024168953889</GapLayertitleItem>
+                    <GapSecond>16.179024168953889</GapSecond>
+                    <PatchHeight>16.179024168953889</PatchHeight>
+                    <PatchWidth>32.358048337907778</PatchWidth>
+                    <Reserved>
+                    </Reserved>
+                  </CommGapInfo>
+                  <Reserved>
+                  </Reserved>
+                </LegendLayerInfo>
+                <DefaultLegendLayerInfo>
+                  <TitleInfo>
+                    <ShowTitle>1</ShowTitle>
+                    <TitleAlign>2</TitleAlign>
+                    <TitleText>FACILITY-单值专题图(CAT_L1)</TitleText>
+                    <Reserved>
+                    </Reserved>
+                    <TextInfo>
+                      <Angle>0.0</Angle>
+                      <Chnt>0</Chnt>
+                      <Color>0</Color>
+                      <Height>8.0</Height>
+                      <Width>8.0</Width>
+                      <Ifnt>0</Ifnt>
+                      <Ifnx>0</Ifnx>
+                      <Space>0.0</Space>
+                    </TextInfo>
+                  </TitleInfo>
+                  <ItemShowInfo>
+                    <ShowLabel>1</ShowLabel>
+                    <ShowDesp>0</ShowDesp>
+                    <Reserved>
+                    </Reserved>
+                  </ItemShowInfo>
+                  <NewColumn>0</NewColumn>
+                  <TextInfo>
+                    <Angle>0.0</Angle>
+                    <Chnt>0</Chnt>
+                    <Color>0</Color>
+                    <Height>5.0</Height>
+                    <Width>5.0</Width>
+                    <Ifnt>0</Ifnt>
+                    <Ifnx>0</Ifnx>
+                    <Space>0.0</Space>
+                  </TextInfo>
+                  <TextInfo>
+                    <Angle>0.0</Angle>
+                    <Chnt>0</Chnt>
+                    <Color>0</Color>
+                    <Height>5.0</Height>
+                    <Width>5.0</Width>
+                    <Ifnt>0</Ifnt>
+                    <Ifnx>0</Ifnx>
+                    <Space>0.0</Space>
+                  </TextInfo>
+                  <Column>1</Column>
+                  <LegendItemPatchInfo>
+                    <PatchCommInfo>
+                      <ChangePatchHW>0</ChangePatchHW>
+                      <ShowPatchFrame>0</ShowPatchFrame>
+                      <ShowBackClr>0</ShowBackClr>
+                      <PatchHeight>10.0</PatchHeight>
+                      <PatchWidth>20.0</PatchWidth>
+                      <BackClr>6</BackClr>
+                      <FrameClr>0</FrameClr>
+                      <Reserved>
+                      </Reserved>
+                    </PatchCommInfo>
+                    <SymbolType>1</SymbolType>
+                    <PntInfo lib="0" id="0" height="0.0" width="0.0" angle="0.0" outpenw="0.0;0.0;0.0" outclr="0;0;0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0">
+                    </PntInfo>
+                    <Reserved>
+                    </Reserved>
+                  </LegendItemPatchInfo>
+                  <ArrType>0</ArrType>
+                  <LegendLayerGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</LegendLayerGUID>
+                  <ItemShowInfo>
+                    <DispFillClr>0</DispFillClr>
+                    <DispFrame>0</DispFrame>
+                    <FillClr>9</FillClr>
+                    <FrameClr>0</FrameClr>
+                    <Reserved>
+                    </Reserved>
+                  </ItemShowInfo>
+                  <CommGapInfo>
+                    <GapFirst>10.0</GapFirst>
+                    <GapItems>10.0</GapItems>
+                    <GapLayertitleItem>10.0</GapLayertitleItem>
+                    <GapSecond>10.0</GapSecond>
+                    <PatchHeight>10.0</PatchHeight>
+                    <PatchWidth>20.0</PatchWidth>
+                    <Reserved>
+                    </Reserved>
+                  </CommGapInfo>
+                  <Reserved>
+                  </Reserved>
+                </DefaultLegendLayerInfo>
+                <ItemCount>5</ItemCount>
+                <LayerID>2</LayerID>
+                <LegendTitleItem>
+                  <BaseItem>
+                    <ItemType>1</ItemType>
+                    <ItemState>0</ItemState>
+                    <Rect>
+                      <xmin>0.0</xmin>
+                      <ymin>0.0</ymin>
+                      <xmax>174.7334589958191</xmax>
+                      <ymax>12.943219184875489</ymax>
+                    </Rect>
+                    <Pos>
+                      <X>0.0</X>
+                      <Y>161.79024168953888</Y>
+                    </Pos>
+                    <Show>1</Show>
+                    <FilledClr>9</FilledClr>
+                    <IsFilledBKClr>0</IsFilledBKClr>
+                    <FrameClr>0</FrameClr>
+                    <IsDispFrame>0</IsDispFrame>
+                    <ItemID>3</ItemID>
+                  </BaseItem>
+                  <TitleInfo>
+                    <ShowTitle>1</ShowTitle>
+                    <TitleAlign>2</TitleAlign>
+                    <TitleText>FACILITY-单值专题图(CAT_L1)</TitleText>
+                    <Reserved>
+                    </Reserved>
+                    <TextInfo>
+                      <Angle>0.0</Angle>
+                      <Chnt>0</Chnt>
+                      <Color>0</Color>
+                      <Height>12.943219184875489</Height>
+                      <Width>12.943219184875489</Width>
+                      <Ifnt>0</Ifnt>
+                      <Ifnx>0</Ifnx>
+                      <Space>0.0</Space>
+                    </TextInfo>
+                  </TitleInfo>
+                </LegendTitleItem>
+                <LegendItems>
+                  <LegendItem_1>
+                    <LegendItem>
+                      <BaseItem>
+                        <ItemType>2</ItemType>
+                        <ItemState>0</ItemState>
+                        <Rect>
+                          <xmin>0.0</xmin>
+                          <ymin>0.0</ymin>
+                          <xmax>80.89511999221323</xmax>
+                          <ymax>16.179024168953889</ymax>
+                        </Rect>
+                        <Pos>
+                          <X>0.0</X>
+                          <Y>129.4321933516311</Y>
+                        </Pos>
+                        <Show>1</Show>
+                        <FilledClr>9</FilledClr>
+                        <IsFilledBKClr>0</IsFilledBKClr>
+                        <FrameClr>1</FrameClr>
+                        <IsDispFrame>0</IsDispFrame>
+                        <ItemID>4</ItemID>
+                      </BaseItem>
+                      <ItemGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</ItemGUID>
+                      <LegendItemInfo>
+                        <LabelText>社区服务</LabelText>
+                        <DespText>Desp</DespText>
+                        <ItemShowInfo>
+                          <ShowLabel>1</ShowLabel>
+                          <ShowDesp>0</ShowDesp>
+                          <Reserved>
+                          </Reserved>
+                        </ItemShowInfo>
+                        <TextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </TextInfo>
+                        <DespTextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </DespTextInfo>
+                        <LegendItemPatchInfo>
+                          <PatchCommInfo>
+                            <ChangePatchHW>0</ChangePatchHW>
+                            <ShowPatchFrame>0</ShowPatchFrame>
+                            <ShowBackClr>0</ShowBackClr>
+                            <PatchHeight>16.179024168953889</PatchHeight>
+                            <PatchWidth>32.358048337907778</PatchWidth>
+                            <BackClr>6</BackClr>
+                            <FrameClr>0</FrameClr>
+                            <Reserved>
+                            </Reserved>
+                          </PatchCommInfo>
+                          <SymbolType>1</SymbolType>
+                          <PntInfo lib="0" id="216" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="949;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                          </PntInfo>
+                          <Reserved>
+                          </Reserved>
+                        </LegendItemPatchInfo>
+                        <ArrType>0</ArrType>
+                        <FirstGap>16.179024168953889</FirstGap>
+                        <SecondGap>16.179024168953889</SecondGap>
+                        <Reserved>
+                        </Reserved>
+                      </LegendItemInfo>
+                      <LabelOffset>32.35804748535156</LabelOffset>
+                      <DespOffset>16.17902374267578</DespOffset>
+                    </LegendItem>
+                  </LegendItem_1>
+                  <LegendItem_2>
+                    <LegendItem>
+                      <BaseItem>
+                        <ItemType>2</ItemType>
+                        <ItemState>0</ItemState>
+                        <Rect>
+                          <xmin>0.0</xmin>
+                          <ymin>0.0</ymin>
+                          <xmax>80.89511999221323</xmax>
+                          <ymax>16.179024168953889</ymax>
+                        </Rect>
+                        <Pos>
+                          <X>0.0</X>
+                          <Y>97.07414501372333</Y>
+                        </Pos>
+                        <Show>1</Show>
+                        <FilledClr>9</FilledClr>
+                        <IsFilledBKClr>0</IsFilledBKClr>
+                        <FrameClr>1</FrameClr>
+                        <IsDispFrame>0</IsDispFrame>
+                        <ItemID>5</ItemID>
+                      </BaseItem>
+                      <ItemGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</ItemGUID>
+                      <LegendItemInfo>
+                        <LabelText>文化体育</LabelText>
+                        <DespText>Desp</DespText>
+                        <ItemShowInfo>
+                          <ShowLabel>1</ShowLabel>
+                          <ShowDesp>0</ShowDesp>
+                          <Reserved>
+                          </Reserved>
+                        </ItemShowInfo>
+                        <TextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </TextInfo>
+                        <DespTextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </DespTextInfo>
+                        <LegendItemPatchInfo>
+                          <PatchCommInfo>
+                            <ChangePatchHW>0</ChangePatchHW>
+                            <ShowPatchFrame>0</ShowPatchFrame>
+                            <ShowBackClr>0</ShowBackClr>
+                            <PatchHeight>16.179024168953889</PatchHeight>
+                            <PatchWidth>32.358048337907778</PatchWidth>
+                            <BackClr>6</BackClr>
+                            <FrameClr>0</FrameClr>
+                            <Reserved>
+                            </Reserved>
+                          </PatchCommInfo>
+                          <SymbolType>1</SymbolType>
+                          <PntInfo lib="0" id="214" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="1428;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                          </PntInfo>
+                          <Reserved>
+                          </Reserved>
+                        </LegendItemPatchInfo>
+                        <ArrType>0</ArrType>
+                        <FirstGap>16.179024168953889</FirstGap>
+                        <SecondGap>16.179024168953889</SecondGap>
+                        <Reserved>
+                        </Reserved>
+                      </LegendItemInfo>
+                      <LabelOffset>32.35804748535156</LabelOffset>
+                      <DespOffset>16.17902374267578</DespOffset>
+                    </LegendItem>
+                  </LegendItem_2>
+                  <LegendItem_3>
+                    <LegendItem>
+                      <BaseItem>
+                        <ItemType>2</ItemType>
+                        <ItemState>0</ItemState>
+                        <Rect>
+                          <xmin>0.0</xmin>
+                          <ymin>0.0</ymin>
+                          <xmax>80.89511999221323</xmax>
+                          <ymax>16.179024168953889</ymax>
+                        </Rect>
+                        <Pos>
+                          <X>0.0</X>
+                          <Y>64.71609667581555</Y>
+                        </Pos>
+                        <Show>1</Show>
+                        <FilledClr>9</FilledClr>
+                        <IsFilledBKClr>0</IsFilledBKClr>
+                        <FrameClr>1</FrameClr>
+                        <IsDispFrame>0</IsDispFrame>
+                        <ItemID>6</ItemID>
+                      </BaseItem>
+                      <ItemGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</ItemGUID>
+                      <LegendItemInfo>
+                        <LabelText>教育设施</LabelText>
+                        <DespText>Desp</DespText>
+                        <ItemShowInfo>
+                          <ShowLabel>1</ShowLabel>
+                          <ShowDesp>0</ShowDesp>
+                          <Reserved>
+                          </Reserved>
+                        </ItemShowInfo>
+                        <TextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </TextInfo>
+                        <DespTextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </DespTextInfo>
+                        <LegendItemPatchInfo>
+                          <PatchCommInfo>
+                            <ChangePatchHW>0</ChangePatchHW>
+                            <ShowPatchFrame>0</ShowPatchFrame>
+                            <ShowBackClr>0</ShowBackClr>
+                            <PatchHeight>16.179024168953889</PatchHeight>
+                            <PatchWidth>32.358048337907778</PatchWidth>
+                            <BackClr>6</BackClr>
+                            <FrameClr>0</FrameClr>
+                            <Reserved>
+                            </Reserved>
+                          </PatchCommInfo>
+                          <SymbolType>1</SymbolType>
+                          <PntInfo lib="0" id="212" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="1167;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                          </PntInfo>
+                          <Reserved>
+                          </Reserved>
+                        </LegendItemPatchInfo>
+                        <ArrType>0</ArrType>
+                        <FirstGap>16.179024168953889</FirstGap>
+                        <SecondGap>16.179024168953889</SecondGap>
+                        <Reserved>
+                        </Reserved>
+                      </LegendItemInfo>
+                      <LabelOffset>32.35804748535156</LabelOffset>
+                      <DespOffset>16.17902374267578</DespOffset>
+                    </LegendItem>
+                  </LegendItem_3>
+                  <LegendItem_4>
+                    <LegendItem>
+                      <BaseItem>
+                        <ItemType>2</ItemType>
+                        <ItemState>0</ItemState>
+                        <Rect>
+                          <xmin>0.0</xmin>
+                          <ymin>0.0</ymin>
+                          <xmax>80.89511999221323</xmax>
+                          <ymax>16.179024168953889</ymax>
+                        </Rect>
+                        <Pos>
+                          <X>0.0</X>
+                          <Y>32.358048337907778</Y>
+                        </Pos>
+                        <Show>1</Show>
+                        <FilledClr>9</FilledClr>
+                        <IsFilledBKClr>0</IsFilledBKClr>
+                        <FrameClr>1</FrameClr>
+                        <IsDispFrame>0</IsDispFrame>
+                        <ItemID>7</ItemID>
+                      </BaseItem>
+                      <ItemGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</ItemGUID>
+                      <LegendItemInfo>
+                        <LabelText>医疗卫生</LabelText>
+                        <DespText>Desp</DespText>
+                        <ItemShowInfo>
+                          <ShowLabel>1</ShowLabel>
+                          <ShowDesp>0</ShowDesp>
+                          <Reserved>
+                          </Reserved>
+                        </ItemShowInfo>
+                        <TextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </TextInfo>
+                        <DespTextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </DespTextInfo>
+                        <LegendItemPatchInfo>
+                          <PatchCommInfo>
+                            <ChangePatchHW>0</ChangePatchHW>
+                            <ShowPatchFrame>0</ShowPatchFrame>
+                            <ShowBackClr>0</ShowBackClr>
+                            <PatchHeight>16.179024168953889</PatchHeight>
+                            <PatchWidth>32.358048337907778</PatchWidth>
+                            <BackClr>6</BackClr>
+                            <FrameClr>0</FrameClr>
+                            <Reserved>
+                            </Reserved>
+                          </PatchCommInfo>
+                          <SymbolType>1</SymbolType>
+                          <PntInfo lib="0" id="213" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="126;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                          </PntInfo>
+                          <Reserved>
+                          </Reserved>
+                        </LegendItemPatchInfo>
+                        <ArrType>0</ArrType>
+                        <FirstGap>16.179024168953889</FirstGap>
+                        <SecondGap>16.179024168953889</SecondGap>
+                        <Reserved>
+                        </Reserved>
+                      </LegendItemInfo>
+                      <LabelOffset>32.35804748535156</LabelOffset>
+                      <DespOffset>16.17902374267578</DespOffset>
+                    </LegendItem>
+                  </LegendItem_4>
+                  <LegendItem_5>
+                    <LegendItem>
+                      <BaseItem>
+                        <ItemType>2</ItemType>
+                        <ItemState>0</ItemState>
+                        <Rect>
+                          <xmin>0.0</xmin>
+                          <ymin>0.0</ymin>
+                          <xmax>80.89511999221323</xmax>
+                          <ymax>16.179024168953889</ymax>
+                        </Rect>
+                        <Pos>
+                          <X>0.0</X>
+                          <Y>0.0</Y>
+                        </Pos>
+                        <Show>1</Show>
+                        <FilledClr>9</FilledClr>
+                        <IsFilledBKClr>0</IsFilledBKClr>
+                        <FrameClr>1</FrameClr>
+                        <IsDispFrame>0</IsDispFrame>
+                        <ItemID>8</ItemID>
+                      </BaseItem>
+                      <ItemGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</ItemGUID>
+                      <LegendItemInfo>
+                        <LabelText>社会福利</LabelText>
+                        <DespText>Desp</DespText>
+                        <ItemShowInfo>
+                          <ShowLabel>1</ShowLabel>
+                          <ShowDesp>0</ShowDesp>
+                          <Reserved>
+                          </Reserved>
+                        </ItemShowInfo>
+                        <TextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </TextInfo>
+                        <DespTextInfo>
+                          <Angle>0.0</Angle>
+                          <Chnt>0</Chnt>
+                          <Color>0</Color>
+                          <Height>8.08951187133789</Height>
+                          <Width>8.08951187133789</Width>
+                          <Ifnt>0</Ifnt>
+                          <Ifnx>0</Ifnx>
+                          <Space>0.0</Space>
+                        </DespTextInfo>
+                        <LegendItemPatchInfo>
+                          <PatchCommInfo>
+                            <ChangePatchHW>0</ChangePatchHW>
+                            <ShowPatchFrame>0</ShowPatchFrame>
+                            <ShowBackClr>0</ShowBackClr>
+                            <PatchHeight>16.179024168953889</PatchHeight>
+                            <PatchWidth>32.358048337907778</PatchWidth>
+                            <BackClr>6</BackClr>
+                            <FrameClr>0</FrameClr>
+                            <Reserved>
+                            </Reserved>
+                          </PatchCommInfo>
+                          <SymbolType>1</SymbolType>
+                          <PntInfo lib="0" id="215" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="298;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                          </PntInfo>
+                          <Reserved>
+                          </Reserved>
+                        </LegendItemPatchInfo>
+                        <ArrType>0</ArrType>
+                        <FirstGap>16.179024168953889</FirstGap>
+                        <SecondGap>16.179024168953889</SecondGap>
+                        <Reserved>
+                        </Reserved>
+                      </LegendItemInfo>
+                      <LabelOffset>32.35804748535156</LabelOffset>
+                      <DespOffset>16.17902374267578</DespOffset>
+                    </LegendItem>
+                  </LegendItem_5>
+                </LegendItems>
+              </LegendLayer>
+            </LegendLayer_1>
+          </LegendLayers>
+          <LegendGroupItems>
+          </LegendGroupItems>
+          <Position x="378.9411764705883" y="18.994261119081885" z="3.4064001113269e-310">
+          </Position>
+        </element>
+      </elements>
+      <bookMarks>
+      </bookMarks>
+      <background>
+      </background>
+      <Extend>
+        <AdaptionToElement>False</AdaptionToElement>
+      </Extend>
+    </layout>
+    <Extend>
+      <LayoutXml>&lt;XtraSerializer version="1.0" application="TabbedView"&gt;&lt;property name="#LayoutVersion" /&gt;&lt;property name="DocumentProperties" isnull="true" iskey="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="DocumentGroupProperties" isnull="true" iskey="true" /&gt;&lt;property name="EnableFreeLayoutMode"&gt;True&lt;/property&gt;&lt;property name="EnableStickySplitters"&gt;Default&lt;/property&gt;&lt;property name="CustomResizeZoneThickness"&gt;0&lt;/property&gt;&lt;property name="FloatingDocumentContainer"&gt;DocumentsHost&lt;/property&gt;&lt;property name="LoadingIndicatorProperties" isnull="true" iskey="true" /&gt;&lt;property name="DocumentSelectorProperties" isnull="true" iskey="true" /&gt;&lt;property name="WindowsDialogProperties" isnull="true" iskey="true" /&gt;&lt;property name="Items" iskey="true" value="5"&gt;&lt;property name="Item1" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;false&lt;/property&gt;&lt;property name="Index"&gt;1&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=1936@3,Height=994&lt;/property&gt;&lt;property name="IsActive"&gt;false&lt;/property&gt;&lt;property name="Name"&gt;MapGIS.GDBManager.Plugin.CVContentView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item2" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;true&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=1936@3,Height=994&lt;/property&gt;&lt;property name="IsActive"&gt;true&lt;/property&gt;&lt;property name="Name"&gt;0$MapView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item3" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;Root&lt;/property&gt;&lt;property name="Element" isnull="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;26199929&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item4" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;26199929&lt;/property&gt;&lt;property name="Element"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;36624858&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item5" isnull="true" iskey="true"&gt;&lt;property name="Properties" isnull="true" iskey="true" /&gt;&lt;property name="Length"&gt;1940&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Name"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="TypeName"&gt;DocumentGroup&lt;/property&gt;&lt;/property&gt;&lt;/property&gt;&lt;/XtraSerializer&gt;</LayoutXml>
+    </Extend>
+  </root>
+</datacenter>

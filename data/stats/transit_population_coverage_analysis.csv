@@ -1,0 +1,5 @@
+﻿region_key,region_name,total_pop,elderly_pop,metro_800m_covered_pop,metro_800m_pop_coverage_pct,metro_800m_covered_elderly,metro_800m_elderly_coverage_pct,bus_500m_covered_pop,bus_500m_pop_coverage_pct,bus_500m_covered_elderly,bus_500m_elderly_coverage_pct
+wuchang,武昌区,1657386.0,75937.0,1416182.0,85.45,65652.0,86.46,1596270.0,96.31,73169.0,96.35
+qingshan,青山区,444408.0,21148.0,233809.0,52.61,10872.0,51.41,398586.0,89.69,19497.0,92.19
+hanyang,汉阳区,801644.0,35667.0,515979.0,64.37,23092.0,64.74,744338.0,92.85,33168.0,92.99
+study_area_union,三区总体,2864637.0,130986.0,2144407.0,74.86,98643.0,75.31,2700393.0,94.27,124068.0,94.72

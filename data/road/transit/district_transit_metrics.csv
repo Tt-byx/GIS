@@ -1,0 +1,5 @@
+﻿region_key,region_name,area_km2,bus_stops_cnt,bus_stop_density_per_km2,metro_stops_cnt,metro_stop_density_per_km2,bus_route_length_km,bus_network_density_km_per_km2,metro_route_length_km,metro_network_density_km_per_km2,bus_500m_coverage_km2,bus_500m_coverage_rate_pct,metro_800m_coverage_km2,metro_800m_coverage_rate_pct
+wuchang,武昌区,100.31,309,3.08,47,0.469,2123.83,21.17,152.62,1.52,68.38,68.17,54.93,54.77
+qingshan,青山区,91.61,188,2.05,11,0.12,677.53,7.4,37.73,0.41,45.57,49.74,18.73,20.45
+hanyang,汉阳区,112.62,387,3.44,32,0.284,1751.3,15.55,125.73,1.12,74.81,66.42,45.67,40.55
+study_area_union,三区总体,304.54,884,2.9,90,0.296,4552.66,14.95,316.07,1.04,188.76,61.98,119.34,39.19

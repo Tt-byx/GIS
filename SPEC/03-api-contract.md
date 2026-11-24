@@ -3,10 +3,10 @@
 | 字段 | 值 |
 |---|---|
 | `spec.id` | SPEC-03 |
-| `spec.version` | 1.0.0 |
+| `spec.version` | 1.1.0 |
 | `spec.status` | FROZEN |
 | `spec.owner` | 项目组 |
-| `spec.updated` | 2026-10-21 |
+| `spec.updated` | 2026-11-18 |
 | `spec.depends_on` | `00-overview.md`、`02-data-model.md` |
 | `spec.authority` | **第 3 顺位。接口路径、参数、响应结构的唯一权威。** |
 
@@ -163,8 +163,8 @@
           { "l2": "PRI", "l2Name": "小学", "lifeCircle": 10 }
         ] }
     ],
-    "districts": [{ "code": "420111", "name": "洪山区" }],
-    "streets": [{ "code": "420111001", "name": "关山街道", "districtCode": "420111" }],
+    "districts": [{ "code": "420107", "name": "青山区" }],
+    "streets": [{ "code": "420107001", "name": "红钢城街道", "districtCode": "420107" }],
     "tiandituToken": "由后端注入",
     "dataDate": "2026-11-05"
   },
@@ -204,7 +204,7 @@
 |---|---|---|---|---|---|
 | `categoryL1` | string | 否 | `EDU`/`MED`/`CUL`/`WEL`/`COM` | 空 | 大类筛选 |
 | `categoryL2` | string | 否 | 见字典 | 空 | 中类筛选 |
-| `districtCode` | string | 否 | `420111`/`420106`/`420105` | 空 | 行政区筛选 |
+| `districtCode` | string | 否 | `420107`/`420106`/`420105` | 空 | 行政区筛选 |
 | `streetCode` | string | 否 | 见字典 | 空 | 街道筛选 |
 | `keyword` | string | 否 | 长度 0–50 | 空 | 名称包含匹配 |
 | `status` | string | 否 | `正常`/`停办`/`在建`/`未知`/`ALL` | `正常` | 状态筛选 |
@@ -223,13 +223,13 @@
   "data": {
     "total": 42, "page": 1, "size": 20,
     "list": [{
-      "facCode": "420111-MED-CHS-0007",
-      "name": "关山街社区卫生服务中心",
+      "facCode": "420107-MED-CHS-0007",
+      "name": "红钢城街社区卫生服务中心",
       "categoryL1": "MED", "categoryL2": "CHS",
-      "address": "武汉市洪山区关山大道 100 号",
-      "districtCode": "420111", "districtName": "洪山区",
-      "streetCode": "420111001", "streetName": "关山街道",
-      "communityName": "关山社区",
+      "address": "武汉市青山区红钢城大街 100 号",
+      "districtCode": "420107", "districtName": "青山区",
+      "streetCode": "420107001", "streetName": "红钢城街道",
+      "communityName": "红钢城社区",
       "lon": 114.398765, "lat": 30.512345,
       "capacity": 120, "capacityUnit": "床位", "area": 15000,
       "level": "一级", "status": "正常",
@@ -294,7 +294,7 @@
 ```json
 { "code": 0, "msg": "success",
   "data": { "list": [
-    { "name": "关山街社区卫生服务中心", "district": "洪山区", "lon": 114.398, "lat": 30.512 }
+    { "name": "红钢城街社区卫生服务中心", "district": "青山区", "lon": 114.398, "lat": 30.512 }
   ] },
   "traceId": "a1b2c3d4e5f6" }
 ```
@@ -360,7 +360,7 @@
     "level": "street", "metric": "perCapita", "unit": "个/万人",
     "dataDate": "2026-11-05",
     "list": [
-      { "unitCode": "420111001", "unitName": "关山街道", "value": 2.31, "popTotal": 186000, "facCount": 43 }
+      { "unitCode": "420107001", "unitName": "红钢城街道", "value": 2.31, "popTotal": 186000, "facCount": 43 }
     ]
   },
   "traceId": "a1b2c3d4e5f6" }
@@ -406,7 +406,7 @@
 
 ```json
 { "categoryL2": "CHC", "travelMode": "WALK",
-  "thresholds": [5, 10, 15], "districtCode": "420111", "dissolve": true }
+  "thresholds": [5, 10, 15], "districtCode": "420107", "dissolve": true }
 ```
 
 **响应 `data`**
@@ -435,7 +435,7 @@
       { "threshold": 15, "geomWkt": "MULTIPOLYGON(((...)))", "coveredCommunityCount": 41 }
     ],
     "summary": { "totalCommunity": 56, "uncoveredCommunity": 15, "coverageRate": 0.732 },
-    "uncoveredList": [{ "resCode": "R0001", "resName": "某某小区", "streetName": "关山街道" }]
+    "uncoveredList": [{ "resCode": "R0001", "resName": "某某小区", "streetName": "红钢城街道" }]
   },
   "traceId": "a1b2c3d4e5f6" }
 ```
@@ -509,7 +509,7 @@
     "stats": { "min": 0.0, "max": 8.42, "mean": 2.17, "p50": 1.93 },
     "breaks": [0, 0.8, 1.6, 2.6, 4.0, 8.42],
     "results": [
-      { "unitCode": "420111001001", "unitName": "关山社区",
+      { "unitCode": "420107001001", "unitName": "红钢城社区",
         "lon": 114.401, "lat": 30.508, "score": 3.72, "level": 4 }
     ]
   },
@@ -713,3 +713,4 @@
 | 版本 | 日期 | 修订内容 |
 |---|---|---|
 | 1.0.0 | 2026-10-21 | 初始发布：8 个业务接口 + IGServer 调用契约 |
+| 1.1.0 | 2026-11-18 | districtCode 枚举与接口响应示例由洪山区改为青山区（420107） |

@@ -3,10 +3,10 @@
 | 字段 | 值 |
 |---|---|
 | `spec.id` | SPEC-02 |
-| `spec.version` | 1.0.0 |
+| `spec.version` | 1.1.0 |
 | `spec.status` | FROZEN |
 | `spec.owner` | 项目组 |
-| `spec.updated` | 2026-10-21 |
+| `spec.updated` | 2026-11-18 |
 | `spec.depends_on` | `00-overview.md` |
 | `spec.authority` | **第 2 顺位。字段名、类型、约束的唯一权威。任何文件与本文件冲突，以本文件为准。** |
 
@@ -75,18 +75,18 @@
 | 字段 | 类型 | 必填 | 说明 | 示例 |
 |---|---|---|---|---|
 | `FID` | Integer | 是 | GDB 空间域代理主键，**不对外暴露** | 10001 |
-| `FAC_CODE` | String(32) | 是 | **业务主键，全局唯一，永不变更**。格式 `区码-大类-中类-四位序号` | `420111-MED-CHS-0007` |
-| `NAME` | String(100) | 是 | 标准化后名称 | 关山街社区卫生服务中心 |
-| `NAME_RAW` | String(200) | 否 | 原始名称（溯源用） | 关山街社区卫生服务中心（原） |
+| `FAC_CODE` | String(32) | 是 | **业务主键，全局唯一，永不变更**。格式 `区码-大类-中类-四位序号` | `420107-MED-CHS-0007` |
+| `NAME` | String(100) | 是 | 标准化后名称 | 红钢城街社区卫生服务中心 |
+| `NAME_RAW` | String(200) | 否 | 原始名称（溯源用） | 红钢城街社区卫生服务中心（原） |
 | `CAT_L1` | String(3) | 是 | 大类编码 | `MED` |
 | `CAT_L2` | String(3) | 是 | 中类编码 | `CHC` |
 | `CAT_L3` | String(20) | 否 | 小类编码 | — |
-| `ADDRESS` | String(200) | 否 | 详细地址 | 武汉市洪山区关山大道 100 号 |
-| `DISTRICT_CODE` | String(6) | 是 | 行政区代码，**由空间连接生成** | `420111` |
-| `DISTRICT` | String(20) | 是 | 行政区名称 | 洪山区 |
-| `STREET_CODE` | String(9) | 否 | 街道代码，由空间连接生成 | `420111001` |
-| `STREET` | String(50) | 否 | 街道名称 | 关山街道 |
-| `COMMUNITY` | String(50) | 否 | 社区名称 | 关山社区 |
+| `ADDRESS` | String(200) | 否 | 详细地址 | 武汉市青山区红钢城大街 100 号 |
+| `DISTRICT_CODE` | String(6) | 是 | 行政区代码，**由空间连接生成** | `420107` |
+| `DISTRICT` | String(20) | 是 | 行政区名称 | 青山区 |
+| `STREET_CODE` | String(9) | 否 | 街道代码，由空间连接生成 | `420107001` |
+| `STREET` | String(50) | 否 | 街道名称 | 红钢城街道 |
+| `COMMUNITY` | String(50) | 否 | 社区名称 | 红钢城社区 |
 | `LON` | Double(10,6) | 是 | 经度，**CGCS2000** | 114.398765 |
 | `LAT` | Double(10,6) | 是 | 纬度，**CGCS2000** | 30.512345 |
 | `CAPACITY` | Integer | 否 | 服务能力数值 | 120 |
@@ -359,7 +359,7 @@ INSERT INTO DICT_CATEGORY (CAT_L1, CAT_L2, L1_NAME, L2_NAME, LIFE_CIRCLE, COLOR_
 
 -- 行政区（3 条）
 INSERT INTO DICT_DISTRICT (DIST_CODE, DIST_NAME, AREA_KM2, POP_TOTAL, SORT_NO) VALUES
-('420111','洪山区',570.00,1406000,1),
+('420107','青山区', 45.00, 452000,1),
 ('420106','武昌区', 82.00,1097000,2),
 ('420105','汉阳区',111.00, 837000,3);
 
@@ -464,7 +464,7 @@ INSERT INTO SYS_CONFIG (CFG_KEY, CFG_VALUE, REMARK) VALUES
 |---|---|---|
 | `DI-01` | 类别字典条数应为 25 | `SELECT 25 - COUNT(*) FROM DICT_CATEGORY;` |
 | `DI-02` | 行政区字典条数应为 3 | `SELECT 3 - COUNT(*) FROM DICT_DISTRICT;` |
-| `DI-03` | 行政区代码必须为三区之一 | `SELECT DIST_CODE FROM DICT_DISTRICT WHERE DIST_CODE NOT IN ('420111','420106','420105');` |
+| `DI-03` | 行政区代码必须为三区之一 | `SELECT DIST_CODE FROM DICT_DISTRICT WHERE DIST_CODE NOT IN ('420107','420106','420105');` |
 | `DI-04` | 统计表中的单元必须存在于字典 | `SELECT DISTINCT UNIT_CODE FROM STAT_DISTRICT WHERE LEVEL='street' AND UNIT_CODE NOT IN (SELECT STREET_CODE FROM DICT_STREET);` |
 | `DI-05` | 统计表单元必须存在于字典（区级） | `SELECT DISTINCT UNIT_CODE FROM STAT_DISTRICT WHERE LEVEL='district' AND UNIT_CODE NOT IN (SELECT DIST_CODE FROM DICT_DISTRICT);` |
 | `DI-06` | 覆盖率必须在 [0,1] | `SELECT COV_ID FROM STAT_COVERAGE WHERE COVERAGE_RATE < 0 OR COVERAGE_RATE > 1;` |
@@ -527,3 +527,4 @@ INSERT INTO SYS_CONFIG (CFG_KEY, CFG_VALUE, REMARK) VALUES
 | 版本 | 日期 | 修订内容 |
 |---|---|---|
 | 1.0.0 | 2026-10-21 | 初始发布：10 张表 DDL + 6 个 GDB 图层契约 + 字段映射表 + 10 条完整性规则 |
+| 1.1.0 | 2026-11-18 | 字典与示例中的洪山区（420111）替换为青山区（420107），更新完整性规则 DI-03 |
