@@ -12,7 +12,7 @@
       <isCustomEntireExtent>0</isCustomEntireExtent>
       <customEntireExtent xmin="0.0" ymin="0.0" xmax="0.0" ymax="0.0">
       </customEntireExtent>
-      <viewExtent xmin="113.9463817570615" ymin="30.23363474259681" xmax="114.7372280429385" ymax="30.77751225740319">
+      <viewExtent xmin="114.00193251598746" ymin="30.334295" xmax="114.68167728401254" ymax="30.676852">
       </viewExtent>
       <minScale>0.0</minScale>
       <maxScale>0.0</maxScale>
@@ -44,7 +44,7 @@
         <url>GDBP://MapGisLocal/wh_facility/ds/FACILITY/sfcls/FACILITY</url>
         <layerWeight>0</layerWeight>
         <IsSnaped>1</IsSnaped>
-        <state>ACTIVE</state>
+        <state>VISIBLE</state>
         <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
         </directIndex>
         <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
@@ -62,38 +62,38 @@
           <otherInfoSource>1</otherInfoSource>
           <defaultInfo caption="未参与分类的值" isVisible="0" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0">
             <geoInfo>
-              <pntInfo lib="0" id="1" height="3.0" width="3.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="903;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+              <pntInfo lib="0" id="5" height="2.0" width="2.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="30;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
               </pntInfo>
             </geoInfo>
           </defaultInfo>
           <uniqueInfos>
             <uniqueInfo caption="社区服务" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="COM">
               <geoInfo>
-                <pntInfo lib="0" id="216" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="949;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                <pntInfo lib="0" id="216" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="16;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
                 </pntInfo>
               </geoInfo>
             </uniqueInfo>
             <uniqueInfo caption="文化体育" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="CUL">
               <geoInfo>
-                <pntInfo lib="0" id="214" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="1428;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                <pntInfo lib="0" id="214" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="19;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
                 </pntInfo>
               </geoInfo>
             </uniqueInfo>
             <uniqueInfo caption="教育设施" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="EDU">
               <geoInfo>
-                <pntInfo lib="0" id="212" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="1167;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                <pntInfo lib="0" id="212" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="22;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
                 </pntInfo>
               </geoInfo>
             </uniqueInfo>
             <uniqueInfo caption="医疗卫生" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="MED">
               <geoInfo>
-                <pntInfo lib="0" id="213" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="126;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                <pntInfo lib="0" id="213" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="25;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
                 </pntInfo>
               </geoInfo>
             </uniqueInfo>
             <uniqueInfo caption="社会福利" isVisible="1" minScale="0.0" maxScale="0.0" MinMapScale="0.0" MaxMapScale="0.0" value="WEL">
               <geoInfo>
-                <pntInfo lib="0" id="215" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="298;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
+                <pntInfo lib="0" id="215" height="4.0" width="4.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="28;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
                 </pntInfo>
               </geoInfo>
             </uniqueInfo>
@@ -182,9 +182,6 @@
         <featureSortInfo field="" asce="1">
         </featureSortInfo>
         <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
-          <render>
-            <RenderType>0</RenderType>
-          </render>
         </Renders>
         <VirtualFields>
         </VirtualFields>
@@ -193,14 +190,14 @@
         <ScaleRange MinScale="0.0" MaxScale="0.0">
         </ScaleRange>
         <Extend>
-          <Expand>false</Expand>
+          <Expand>true</Expand>
         </Extend>
       </subnode>
       <subnode name="DISTRICT" type="SFeatureLayer" geometryType="3" class="CreateGLayer@GisCartoPrj.dll" LayerClassCode="0">
         <url>GDBP://MapGisLocal/wh_facility/ds/DISTRICT/sfcls/DISTRICT</url>
         <layerWeight>0</layerWeight>
         <IsSnaped>1</IsSnaped>
-        <state>VISIBLE</state>
+        <state>ACTIVE</state>
         <directIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
         </directIndex>
         <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
@@ -268,7 +265,7 @@
           <ReduceLinStep>5.0</ReduceLinStep>
           <SameAs6xLine>0</SameAs6xLine>
           <NotDraw0Lin>0</NotDraw0Lin>
-          <IsFillReg>0</IsFillReg>
+          <IsFillReg>1</IsFillReg>
           <FillRegMinScale>1e100</FillRegMinScale>
           <FillRegMaxScale>0.0</FillRegMaxScale>
           <IsShowRegBorder>0</IsShowRegBorder>
@@ -355,20 +352,16 @@
         </directIndex>
         <reverseIndex transname="" InCord="0" InUnit="0" OutCord="0" OutUnit="0" type="0" lenunit="0" angunit="0" dx="0.0" dy="0.0" dz="0.0" wx="0.0" wy="0.0" wz="0.0" dm="0.0" ds2="0.0" dA2="0.0" df2="0.0" res1="0.0" res2="0.0" szEquationX="" szEquationY="" szEquationZ="">
         </reverseIndex>
-        <conditions>0000000000000000000000000000000000</conditions>
+        <conditions>
+        </conditions>
         <label name="noname" type="SimpleLabel" class="CreateGLabel@GisCartoPrj.dll">
           <state>UNVISIBLE</state>
+          <geomInfoType>5</geomInfoType>
           <minScale>0.0</minScale>
           <maxScale>0.0</maxScale>
           <ScaleRange MinScale="0.0" MaxScale="0.0">
           </ScaleRange>
           <geoInfo>
-            <pntInfo lib="0" id="1" height="10.0" width="10.0" angle="0.0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="5;4;3" ovprnt="0" fillflg="1" backexp="1.0" backclr="1">
-            </pntInfo>
-            <linInfo lib="0" id="1" ovprnt="0" outpenw="0.05000000074505806;0.05000000074505806;0.05000000074505806" outclr="1;4;3" headtype="0" jointype="0" adjustflg="0" makemethod="0" xscale="10.0" yscale="10.0">
-            </linInfo>
-            <regInfo lib="0" id="0" ovprnt="0" fillmode="0" fillclr="17" endclr="0" pathei="5.0" patwid="5.0" ang="0.0" patclr="3" outpenw="1.0" fullpatflg="1">
-            </regInfo>
             <annInfo height="14.0" width="14.0" space="0.0" fontang="0.0" strang="0.0" ifnt="0" chnt="0" ifnx="0" hvpl="0" iclr="0" ovprnt="0" fillflg="0" backexp="0.0" backclr="0" offsetx="0.0" offsety="0.0">
             </annInfo>
           </geoInfo>
@@ -395,14 +388,13 @@
           </placeInfo>
         </label>
         <IsUseSuperLink>0</IsUseSuperLink>
-        <SuperLinkFieldName>
-        </SuperLinkFieldName>
+        <SuperLinkFieldName>无</SuperLinkFieldName>
         <SuperLinkmode>1</SuperLinkmode>
         <LayerControl LayerNo="0">
           <LayerState>
           </LayerState>
         </LayerControl>
-        <systemLibGUID>00000000-0000-0000-0000-000000000000</systemLibGUID>
+        <systemLibGUID>9cbd5f3b-3d69-46aa-8a6d-af8d0f9f621b</systemLibGUID>
         <vectorRenderInfoNew>
           <IsShowSymbol>1</IsShowSymbol>
           <ShowSymbolMinScale>1e100</ShowSymbolMinScale>
@@ -410,7 +402,7 @@
           <IsSymbolFollowZoom>0</IsSymbolFollowZoom>
           <FollowZoomMinScale>1e100</FollowZoomMinScale>
           <FollowZoomMaxScale>0.0</FollowZoomMaxScale>
-          <ScaleOfSymbolSize>-1.0</ScaleOfSymbolSize>
+          <ScaleOfSymbolSize>111319490.793274</ScaleOfSymbolSize>
           <sTransParency>0</sTransParency>
           <IsShowCoord>0</IsShowCoord>
           <ShowCoordColor>1</ShowCoordColor>
@@ -424,7 +416,7 @@
           <ReduceLinStep>5.0</ReduceLinStep>
           <SameAs6xLine>0</SameAs6xLine>
           <NotDraw0Lin>0</NotDraw0Lin>
-          <IsFillReg>1</IsFillReg>
+          <IsFillReg>0</IsFillReg>
           <FillRegMinScale>1e100</FillRegMinScale>
           <FillRegMaxScale>0.0</FillRegMaxScale>
           <IsShowRegBorder>0</IsShowRegBorder>
@@ -447,9 +439,9 @@
         </Renders>
         <VirtualFields>
         </VirtualFields>
-        <minScale>0.0</minScale>
-        <maxScale>0.0</maxScale>
-        <ScaleRange MinScale="0.0" MaxScale="0.0">
+        <minScale>4.207350833131616e-92</minScale>
+        <maxScale>1e100</maxScale>
+        <ScaleRange MinScale="1e100" MaxScale="0.0">
         </ScaleRange>
         <Extend>
         </Extend>
@@ -559,6 +551,9 @@
         <featureSortInfo field="" asce="1">
         </featureSortInfo>
         <Renders BaseVisible="1" LabelVisible="0" SurfaceVisible="1" UseSymbolLevels="0">
+          <render>
+            <RenderType>0</RenderType>
+          </render>
         </Renders>
         <VirtualFields>
         </VirtualFields>
@@ -686,7 +681,7 @@
         </Graphics_Pnt>
         <Graphics_Lin FollowZoom="1">
         </Graphics_Lin>
-        <Graphics_Reg FollowZoom="1">R0RCRFVNUEYBAAEAAAAAAAMAAAAkAAAANDA5MzRhZDAtMjlhYS00Njc0LWJkYmEtYzU0NzQ0NjFjMDJmDAAAAAQAAAAAAAAAQAAAAAAAAAA4AAAAAAAAAP////////////////////////////////////////////////////8AAAAAAAAAAEoAAAAAAAAAiAEAAAAAAAACAAAAAAAAAP//////////AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAACqmZmZmZm5f6qZmZmZmbl/qpmZmZmZuf+qmZmZmZm5/wAAAAAAAWUAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAA/////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABQAAAAAAAAAAAKBAAACgQAAAAAADAAAAAACAPwFKAAAAAAAAAHJE6gcLFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AUAAAEAAAAAAAAA/////4ABAAAAAAAAwAUAAAAAAAAAAAAAAAAAAHBEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAEAAAAAAAAAAAIAAAAAAAAA//////////8=</Graphics_Reg>
+        <Graphics_Reg FollowZoom="1">R0RCRFVNUEYBAAEAAAAAAAMAAAAkAAAAMDhmODE4ZTQtZTRiNi00ZDEyLWE2ZjEtOTM0YTRhNTdjZWRiDAAAAAQAAAAAAAAAQAAAAAAAAAA4AAAAAAAAAP////////////////////////////////////////////////////8AAAAAAAAAAEoAAAAAAAAAiAEAAAAAAAACAAAAAAAAAP//////////AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAACqmZmZmZm5f6qZmZmZmbl/qpmZmZmZuf+qmZmZmZm5/wAAAAAAAWUAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAAAAAAA/////////////////////////////////////////////////////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAABQAAAAAAAAAAAKBAAACgQAAAAAADAAAAAACAPwFKAAAAAAAAAHJE6gcLFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AUAAAEAAAAAAAAA/////4ABAAAAAAAAwAUAAAAAAAAAAAAAAAAAAHBEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAEAAAAAAAAAAAIAAAAAAAAA//////////8=</Graphics_Reg>
         <state>VISIBLE</state>
         <systemLibraryGUID>00000000-0000-0000-0000-000000000000</systemLibraryGUID>
       </GraphicsData>
@@ -1746,7 +1741,7 @@
           </LegendLayers>
           <LegendGroupItems>
           </LegendGroupItems>
-          <Position x="378.9411764705883" y="18.994261119081885" z="1.12373620459167e-310">
+          <Position x="378.9411764705883" y="18.994261119081885" z="3.4064001113269e-310">
           </Position>
         </element>
       </elements>
@@ -1759,7 +1754,7 @@
       </Extend>
     </layout>
     <Extend>
-      <LayoutXml>&lt;XtraSerializer version="1.0" application="TabbedView"&gt;&lt;property name="#LayoutVersion" /&gt;&lt;property name="DocumentProperties" isnull="true" iskey="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="DocumentGroupProperties" isnull="true" iskey="true" /&gt;&lt;property name="EnableFreeLayoutMode"&gt;True&lt;/property&gt;&lt;property name="EnableStickySplitters"&gt;Default&lt;/property&gt;&lt;property name="CustomResizeZoneThickness"&gt;0&lt;/property&gt;&lt;property name="FloatingDocumentContainer"&gt;DocumentsHost&lt;/property&gt;&lt;property name="LoadingIndicatorProperties" isnull="true" iskey="true" /&gt;&lt;property name="DocumentSelectorProperties" isnull="true" iskey="true" /&gt;&lt;property name="WindowsDialogProperties" isnull="true" iskey="true" /&gt;&lt;property name="Items" iskey="true" value="6"&gt;&lt;property name="Item1" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;false&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=2064@4,Height=1431&lt;/property&gt;&lt;property name="IsActive"&gt;false&lt;/property&gt;&lt;property name="Name"&gt;0$MapView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item2" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;false&lt;/property&gt;&lt;property name="Index"&gt;1&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=2064@4,Height=1431&lt;/property&gt;&lt;property name="IsActive"&gt;false&lt;/property&gt;&lt;property name="Name"&gt;880371088$LayoutView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item3" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;true&lt;/property&gt;&lt;property name="Index"&gt;2&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=2064@4,Height=1431&lt;/property&gt;&lt;property name="IsActive"&gt;true&lt;/property&gt;&lt;property name="Name"&gt;MapGIS.GDBManager.Plugin.CVContentView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item4" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;Root&lt;/property&gt;&lt;property name="Element" isnull="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;53880729&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item5" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;53880729&lt;/property&gt;&lt;property name="Element"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;15164517&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item6" isnull="true" iskey="true"&gt;&lt;property name="Properties" isnull="true" iskey="true" /&gt;&lt;property name="Length"&gt;2068&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Name"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="TypeName"&gt;DocumentGroup&lt;/property&gt;&lt;/property&gt;&lt;/property&gt;&lt;/XtraSerializer&gt;</LayoutXml>
+      <LayoutXml>&lt;XtraSerializer version="1.0" application="TabbedView"&gt;&lt;property name="#LayoutVersion" /&gt;&lt;property name="DocumentProperties" isnull="true" iskey="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="DocumentGroupProperties" isnull="true" iskey="true" /&gt;&lt;property name="EnableFreeLayoutMode"&gt;True&lt;/property&gt;&lt;property name="EnableStickySplitters"&gt;Default&lt;/property&gt;&lt;property name="CustomResizeZoneThickness"&gt;0&lt;/property&gt;&lt;property name="FloatingDocumentContainer"&gt;DocumentsHost&lt;/property&gt;&lt;property name="LoadingIndicatorProperties" isnull="true" iskey="true" /&gt;&lt;property name="DocumentSelectorProperties" isnull="true" iskey="true" /&gt;&lt;property name="WindowsDialogProperties" isnull="true" iskey="true" /&gt;&lt;property name="Items" iskey="true" value="5"&gt;&lt;property name="Item1" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;false&lt;/property&gt;&lt;property name="Index"&gt;1&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=1936@3,Height=994&lt;/property&gt;&lt;property name="IsActive"&gt;false&lt;/property&gt;&lt;property name="Name"&gt;MapGIS.GDBManager.Plugin.CVContentView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item2" isnull="true" iskey="true"&gt;&lt;property name="ParentName"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="IsSelected"&gt;true&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="WindowState"&gt;Normal&lt;/property&gt;&lt;property name="Pinned"&gt;false&lt;/property&gt;&lt;property name="Properties" isnull="true" iskey="true"&gt;&lt;property name="AllowClose"&gt;True&lt;/property&gt;&lt;/property&gt;&lt;property name="IsFloating"&gt;false&lt;/property&gt;&lt;property name="Location"&gt;@1,X=0@1,Y=0&lt;/property&gt;&lt;property name="Size"&gt;@4,Width=1936@3,Height=994&lt;/property&gt;&lt;property name="IsActive"&gt;true&lt;/property&gt;&lt;property name="Name"&gt;0$MapView&lt;/property&gt;&lt;property name="TypeName"&gt;Document&lt;/property&gt;&lt;/property&gt;&lt;property name="Item3" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;Root&lt;/property&gt;&lt;property name="Element" isnull="true" /&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;26199929&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item4" isnull="true" iskey="true"&gt;&lt;property name="Parent"&gt;26199929&lt;/property&gt;&lt;property name="Element"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="Orientation"&gt;Horizontal&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Length" isnull="true" iskey="true"&gt;&lt;property name="UnitValue"&gt;1&lt;/property&gt;&lt;property name="UnitType"&gt;Star&lt;/property&gt;&lt;/property&gt;&lt;property name="Name"&gt;36624858&lt;/property&gt;&lt;property name="TypeName"&gt;DockingContainer&lt;/property&gt;&lt;/property&gt;&lt;property name="Item5" isnull="true" iskey="true"&gt;&lt;property name="Properties" isnull="true" iskey="true" /&gt;&lt;property name="Length"&gt;1940&lt;/property&gt;&lt;property name="Index"&gt;0&lt;/property&gt;&lt;property name="Name"&gt;DocumentGroup0&lt;/property&gt;&lt;property name="TypeName"&gt;DocumentGroup&lt;/property&gt;&lt;/property&gt;&lt;/property&gt;&lt;/XtraSerializer&gt;</LayoutXml>
     </Extend>
   </root>
 </datacenter>
