@@ -20,7 +20,7 @@ spring:
 igs:
   ip: 127.0.0.1
   port: 6163
-  mapDoc: wh_facility
+  mapDoc: wh_facility_main
   timeoutMs: 60000
 
 amap:

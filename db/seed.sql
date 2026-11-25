@@ -60,7 +60,7 @@ ON DUPLICATE KEY UPDATE
 -- 系统配置
 INSERT INTO SYS_CONFIG (CFG_KEY, CFG_VALUE, REMARK) VALUES
 ('TIANDITU_TOKEN','__FILL_AT_DEPLOY__','天地图 Key，部署时由后端环境变量注入，禁止提交真实值'),
-('MAP_DOC_NAME','wh_facility','IGServer 地图文档名'),
+('MAP_DOC_NAME','wh_facility_main','IGServer 地图文档名'),
 ('DATA_DATE','2026-11-05','当前数据版本日期')
 ON DUPLICATE KEY UPDATE
   CFG_VALUE = VALUES(CFG_VALUE),
