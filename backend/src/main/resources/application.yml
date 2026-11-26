@@ -22,6 +22,12 @@ igs:
   port: 6163
   mapDoc: wh_facility_main
   timeoutMs: 60000
+  # T-021 功能服务（服务区分析工作流），走 igs/rest/mrfws/execute/{flowNo}
+  serviceArea:
+    flowNo: 600366
+    netClsUrl: gdbp://MapGisLocal/sample/ds/网络分析/ncls/道路交通网
+    dataDir: ./data
+    maxCenters: 200
 
 amap:
   key: ${AMAP_KEY:}

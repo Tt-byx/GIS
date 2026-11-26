@@ -20,6 +20,8 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * IGServer 唯一 HTTP 客户端。后端所有对 IGServer 的调用 MUST 经此类，
@@ -226,11 +228,86 @@ public class IgsClient {
     /**
      * 调用网络分析功能服务（服务区 API-05 依赖）。
      * 规则 A-13：功能服务 MUST 先在工作流编辑器搭好并发布模板。
-     * 当前仅占位，服务名写入配置后填充真实 URL。
+     *
+     * @deprecated 用 {@link #runServiceArea(int, String, String, double)}，本方法仅为兼容保留
      */
+    @Deprecated
     public Map<String, Object> runNetworkAnalysis(Map<String, Object> params) {
-        // TODO: 待 T-021 完成后实现
         throw new BizException(ErrorCode.DATA_NOT_READY);
+    }
+
+    /**
+     * 执行"服务区分析"功能服务（工作流），返回服务区几何 WKT。
+     *
+     * <p>通道：IGServer {@code FunctionWareService}（Config.xml 中 PrefixPath =
+     * {@code igs/rest/mrfws}），不是 Manager 9999 —— 后端不应持有管理端登录态。
+     *
+     * <p>错误映射（SPEC/03 §7 错误情形）：
+     * <ul>
+     *   <li>工作流报"打开网络类失败" → {@link ErrorCode#DATA_NOT_READY}(2002)，路网未发布</li>
+     *   <li>工作流其它异常 / 无几何返回 → {@link ErrorCode#IGS_ERROR}(3002)</li>
+     *   <li>IGServer 不可达 → {@link ErrorCode#IGS_UNAVAILABLE}(3001)</li>
+     * </ul>
+     *
+     * @param flowNo           功能服务流程号，服务区分析固定 600366
+     * @param netClsUrl        网络类 gdbp 地址
+     * @param centerPointsJson 中心点 JSON，如 {@code [{"x":114.28,"y":30.57,"capacity":300}]}
+     * @param nearDis          搜索半径（网络单位，km）
+     * @return 服务区几何 WKT（POLYGON / MULTIPOLYGON）
+     */
+    public String runServiceArea(int flowNo, String netClsUrl, String centerPointsJson, double nearDis) {
+        String url = baseUrl + "/igs/rest/mrfws/execute/" + flowNo
+                + "?netClsUrl=" + urlEncode(netClsUrl)
+                + "&centerPointsJsonInfo=" + urlEncode(centerPointsJson)
+                + "&nearDis=" + nearDis
+                + "&compress=false&compressionRatio=1";
+        String body;
+        try {
+            body = getBodyWithRetry(url);
+        } catch (ResourceAccessException e) {
+            throw new BizException(ErrorCode.IGS_UNAVAILABLE);
+        } catch (RestClientResponseException e) {
+            log.warn("服务区分析功能服务返回 HTTP {} flowNo={}", e.getStatusCode().value(), flowNo);
+            throw new BizException(ErrorCode.IGS_ERROR);
+        }
+        if (body == null || body.isBlank()) {
+            throw new BizException(ErrorCode.IGS_ERROR);
+        }
+
+        String error = firstErrorDescription(body);
+        if (error != null) {
+            log.warn("服务区分析功能服务返回异常 flowNo={}: {}", flowNo, error);
+            if (error.contains("打开网络类") || error.contains("网络类")) {
+                throw new BizException(ErrorCode.DATA_NOT_READY);
+            }
+            throw new BizException(ErrorCode.IGS_ERROR);
+        }
+
+        String wkt = firstWkt(body);
+        if (wkt == null) {
+            // SPEC 禁止：返回空 geomWkt 却标记成功
+            log.warn("服务区分析未返回几何 flowNo={}", flowNo);
+            throw new BizException(ErrorCode.IGS_ERROR);
+        }
+        return wkt;
+    }
+
+    /** 取 FlowResult 中第一个非空 ErrDescription。 */
+    private static String firstErrorDescription(String xml) {
+        Matcher matcher = Pattern.compile("<(?:[A-Za-z0-9]+:)?ErrDescription>([^<]*)</").matcher(xml);
+        while (matcher.find()) {
+            String value = matcher.group(1).trim();
+            if (!value.isEmpty()) {
+                return value;
+            }
+        }
+        return null;
+    }
+
+    /** 取响应中第一个 POLYGON / MULTIPOLYGON WKT。 */
+    private static String firstWkt(String xml) {
+        Matcher matcher = Pattern.compile("((?:MULTI)?POLYGON\\s*\\(\\(.*?\\)\\))", Pattern.DOTALL).matcher(xml);
+        return matcher.find() ? matcher.group(1) : null;
     }
 
     // ============================================================== 重试策略
