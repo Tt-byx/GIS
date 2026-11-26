@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -337,7 +338,111 @@ class IgsClientTest {
         }
     }
 
-    // ============================================================ 5. 网络分析（占位）
+    // ============================================================ 5. 重试策略
+
+    @Nested
+    @DisplayName("失败重试（最多 2 次）")
+    class RetryPolicy {
+
+        @Test
+        @DisplayName("5xx 两次后成功：重试生效，共 3 次请求")
+        void shouldRetryTwiceThenSucceed() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                if (hits.incrementAndGet() <= 2) {
+                    respond(ex, 500, "{}");
+                } else {
+                    respond(ex, 200, "[\"wh_facility_main\"]");
+                }
+            });
+
+            List<String> docs = client.listMapDocs();
+
+            assertThat(docs).containsExactly("wh_facility_main");
+            assertThat(hits.get()).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("持续 5xx：重试上限 2 次，共 3 次请求后抛 IGS_ERROR")
+        void shouldStopAfterMaxRetries() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                hits.incrementAndGet();
+                respond(ex, 503, "{}");
+            });
+
+            assertThatThrownBy(client::listMapDocs)
+                    .isInstanceOf(BizException.class)
+                    .satisfies(e -> assertThat(((BizException) e).getErrorCode())
+                            .isEqualTo(ErrorCode.IGS_ERROR));
+            assertThat(hits.get()).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("4xx 不重试：只发 1 次请求")
+        void shouldNotRetryOn4xx() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                hits.incrementAndGet();
+                respond(ex, 404, "{}");
+            });
+
+            assertThatThrownBy(client::listMapDocs)
+                    .isInstanceOf(BizException.class)
+                    .satisfies(e -> assertThat(((BizException) e).getErrorCode())
+                            .isEqualTo(ErrorCode.IGS_ERROR));
+            assertThat(hits.get()).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("queryFeatures 的 404 不重试，仍映射为 DATA_NOT_READY")
+        void shouldNotRetry404OnQueryFeatures() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                hits.incrementAndGet();
+                respond(ex, 404, "{}");
+            });
+
+            assertThatThrownBy(() -> client.queryFeatures("0", "1=1", "*", 1, 10))
+                    .isInstanceOf(BizException.class)
+                    .satisfies(e -> assertThat(((BizException) e).getErrorCode())
+                            .isEqualTo(ErrorCode.DATA_NOT_READY));
+            assertThat(hits.get()).isEqualTo(1);
+        }
+
+        @Test
+        @DisplayName("queryFeatures 的 5xx 会重试，两次后成功")
+        void shouldRetryQueryFeatures() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                if (hits.incrementAndGet() <= 2) {
+                    respond(ex, 502, "{}");
+                } else {
+                    respond(ex, 200, "{\"features\":[]}");
+                }
+            });
+
+            Map<String, Object> result = client.queryFeatures("0", "1=1", "*", 1, 10);
+
+            assertThat(result).containsKey("features");
+            assertThat(hits.get()).isEqualTo(3);
+        }
+
+        @Test
+        @DisplayName("健康检查不重试：1 次请求即返回 DOWN（保证 /health 5 秒内返回）")
+        void shouldNotRetryHealthCheck() throws IOException {
+            AtomicInteger hits = new AtomicInteger();
+            IgsClient client = startServer(ex -> {
+                hits.incrementAndGet();
+                respond(ex, 500, "{}");
+            });
+
+            assertThat(client.checkMapService()).isEqualTo("DOWN");
+            assertThat(hits.get()).isEqualTo(1);
+        }
+    }
+
+    // ============================================================ 6. 网络分析（占位）
 
     @Nested
     @DisplayName("runNetworkAnalysis")
@@ -355,7 +460,7 @@ class IgsClientTest {
         }
     }
 
-    // ============================================================ 6. 基础属性
+    // ============================================================ 7. 基础属性
 
     @Test
     @DisplayName("baseUrl 按 igs.ip/port 拼接，mapDoc 原样暴露")

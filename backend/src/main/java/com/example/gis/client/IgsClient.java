@@ -45,6 +45,11 @@ public class IgsClient {
     private final RestClient restClient;
     private final int timeoutMs;
 
+    /** 失败重试上限：最多重试 2 次（含首次共 3 次尝试），T-022 DoD。 */
+    private static final int MAX_RETRIES = 2;
+    /** 重试间隔（毫秒），避免瞬时故障时连续打爆 IGServer。 */
+    private static final long RETRY_BACKOFF_MS = 100L;
+
     public IgsClient(IgsProperties props, ObjectMapper mapper) {
         this.baseUrl = String.format("http://%s:%d", props.getIp(), props.getPort());
         this.mapDoc = props.getMapDoc();
@@ -77,6 +82,8 @@ public class IgsClient {
     public String checkMapService() {
         String url = baseUrl + "/igs/rest/mrcs/docs/" + mapDoc;
         try {
+            // 健康检查刻意不做重试：SPEC 要求整个 /health 5 秒内返回，
+            // 重试会把延迟放大到 3 倍，失去"快速失败"的意义。
             String body = restClient.get().uri(url).retrieve().body(String.class);
             if (body != null && !body.isBlank()) {
                 JsonNode root = mapper.readTree(body);
@@ -113,7 +120,7 @@ public class IgsClient {
     public List<String> listMapDocs() {
         String url = baseUrl + "/igs/rest/mrcs/docs";
         try {
-            String body = restClient.get().uri(url).retrieve().body(String.class);
+            String body = getBodyWithRetry(url);
             if (body == null || body.isBlank()) return new ArrayList<>();
             // 直接返回 JSON 数组字符串，mapper 解析成 List<String>
             return mapper.readValue(body, new TypeReference<List<String>>() {});
@@ -136,7 +143,7 @@ public class IgsClient {
     public Map<String, Object> getMapDocInfo() {
         String url = baseUrl + "/igs/rest/mrcs/docs/" + mapDoc;
         try {
-            String body = restClient.get().uri(url).retrieve().body(String.class);
+            String body = getBodyWithRetry(url);
             if (body == null || body.isBlank()) throw new BizException(ErrorCode.IGS_ERROR);
             return mapper.readValue(body, new TypeReference<>() {});
         } catch (ResourceAccessException e) {
@@ -186,7 +193,7 @@ public class IgsClient {
                 + "&f=json";
 
         try {
-            String body = restClient.get().uri(URI.create(url)).retrieve().body(String.class);
+            String body = getBodyWithRetry(url);
             if (body == null || body.isBlank()) throw new BizException(ErrorCode.IGS_ERROR);
             JsonNode root = mapper.readTree(body);
 
@@ -224,6 +231,43 @@ public class IgsClient {
     public Map<String, Object> runNetworkAnalysis(Map<String, Object> params) {
         // TODO: 待 T-021 完成后实现
         throw new BizException(ErrorCode.DATA_NOT_READY);
+    }
+
+    // ============================================================== 重试策略
+
+    /**
+     * 带重试的 GET，最多重试 {@link #MAX_RETRIES} 次（含首次共 3 次尝试）。
+     *
+     * <p>可重试：连接/读超时（{@link ResourceAccessException}）、HTTP 5xx —— 属瞬时故障。
+     * <p>不重试：4xx —— 参数或路径错误，重试无意义；且 404 需原样上抛映射成
+     * {@link ErrorCode#DATA_NOT_READY}，不能被重试吞掉。
+     *
+     * @return 响应体（可能为 null，由调用方决定如何处理空体）
+     */
+    private String getBodyWithRetry(String url) {
+        URI uri = URI.create(url);
+        for (int attempt = 0; ; attempt++) {
+            try {
+                return restClient.get().uri(uri).retrieve().body(String.class);
+            } catch (ResourceAccessException e) {
+                if (attempt >= MAX_RETRIES) throw e;
+                log.warn("IGServer 请求不可达，重试 {}/{} url={}", attempt + 1, MAX_RETRIES, url);
+                backoff();
+            } catch (RestClientResponseException e) {
+                if (!e.getStatusCode().is5xxServerError() || attempt >= MAX_RETRIES) throw e;
+                log.warn("IGServer 返回 {}，重试 {}/{} url={}",
+                        e.getStatusCode().value(), attempt + 1, MAX_RETRIES, url);
+                backoff();
+            }
+        }
+    }
+
+    private static void backoff() {
+        try {
+            Thread.sleep(RETRY_BACKOFF_MS);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     // ============================================================== 工具
